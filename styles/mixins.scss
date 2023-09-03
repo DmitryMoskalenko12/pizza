@@ -3,3 +3,9 @@
   justify-content: $jc;
   align-items: $ai;
 }
+
+@mixin logoWidthHeight ($width, $height, $fit) {
+  width: $width;
+  height: $height;
+  object-fit: $fit;
+}

@@ -3,7 +3,7 @@ export const navDataLink = [
   {content: 'Паста', href: '/', id: 2},
   {content: 'Супи', href: '/', id: 3},
   {content: 'Салати', href: '/', id: 4},
-  {content: 'Десерти', href: '/', id: 6},
+  {content: 'Напої', href: '/', id: 6},
   {content: 'Бакалія', href: '/', id: 7},
   {content: 'Антипасті', href: '/', id: 8},
   {content: 'Акції', href: '/', id: 9},

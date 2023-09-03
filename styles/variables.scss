@@ -45,8 +45,16 @@ $font-weight500: 500;
 $font-weight600: 600;
 $font-weight700: 700;
 $font-weight800: 800;
+$font-weight900: 900;
 
 // font-family
 
 $font-family: 'Montserrat';
 
+// transition
+
+$transition: 0.5s all;
+
+// link-click-padding
+
+$padding-click-link: 5px 20px;

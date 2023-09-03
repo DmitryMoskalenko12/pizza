@@ -10,9 +10,7 @@
 }
 
 .logo {
-  width: 60px;
-  height: 45px;
-  object-fit: cover;
+  @include mixins.logoWidthHeight(60px, 45px, cover);
 }
 
 .deliveryHeaderUp {
@@ -31,6 +29,43 @@
   display: none;
 }
 
+.close {
+  cursor: pointer;
+}
+
+.phone2 {
+  display: block;
+  padding: variables.$padding-click-link;
+  width: max-content;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size18;
+  font-weight: variables.$font-weight700;
+  text-transform: uppercase;
+  color: variables.$nav-link-color;
+  margin: 0 auto;
+  margin-top: 3px;
+}
+
+.basket2 {
+  width: 160px;
+  height: 42px;
+  @include mixins.flex(flex, center, center);
+  gap: 14px;
+  background: variables.$white;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  margin: 0 auto;
+  margin-top: 19px;
+  span {
+    color: variables.$price-color;
+    font-family: variables.$font-family;
+    font-size: variables.$font-size16;
+    font-weight: variables.$font-weight700;
+  }
+}
+
 .burger {
   width: 39px;
   height: 27px;
@@ -42,5 +77,314 @@
     width: 39px;
     height: 3px;
     background: variables.$burger-color;
+  }
+}
+
+.headerBottom {
+  height: 509px;
+  position: absolute;
+  top: -100%;
+  left:0;
+  right: 0;
+  background: variables.$main-color;
+  box-shadow: 0px 4px 38px 0px rgba(0, 0, 0, 0.10);
+  transition: variables.$transition;
+}
+
+.headerBottomActive {
+  position: absolute;
+  left:0;
+  right: 0;
+  top: 0;
+  background: variables.$main-color;
+  box-shadow: 0px 4px 38px 0px rgba(0, 0, 0, 0.10);
+  transition: variables.$transition;
+}
+
+.logoClose {
+  padding: 6px 10px 0 10px;
+  @include mixins.flex(flex, space-between, center);
+}
+
+.navLogo {
+  @include mixins.logoWidthHeight(60px, 45px, cover);
+}
+
+.navList {
+  @include mixins.flex(flex, center, center);
+  flex-direction: column;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 9px;
+  gap: 10px;
+}
+
+.navLink {
+  padding: variables.$padding-click-link;
+  color: variables.$nav-link-color;
+  text-align: center;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size15;
+  font-weight: variables.$font-weight600;
+  text-decoration: none;
+}
+
+.signIn {
+  padding: variables.$padding-click-link;
+  display: block;
+  width: max-content;
+  color: variables.$nav-link-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size15;
+  font-weight: variables.$font-weight800;
+  text-decoration: none;
+  margin: 0 auto;
+  margin-top: 13px;
+}
+
+@media (min-width: 768px) {
+  .header {
+    padding: 20px 20px 0px 20px;
+  }
+  
+  .basket {
+    @include mixins.flex(flex, center, center);
+    background: variables.$main-color;
+    gap: 14px;
+    width: 160px;
+    height: 42px;
+    cursor: pointer;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-left: 22px;
+    span {
+      color: variables.$price-color;
+      font-family: variables.$font-family;
+      font-size: variables.$font-size16;
+      font-weight: variables.$font-weight700;
+    }
+  }
+
+  .phone {
+    display: block;
+    margin-left: 185px;
+  }
+
+  .burger {
+    margin-left: 21px;
+    div{
+      transition: variables.$transition;
+    }
+  }
+
+  .burgerActive {
+    margin-left: 21px;
+    div{
+      margin-bottom: -2px;
+      &:nth-child(1){
+        transform: translateY(3px) rotate(-45deg);
+      }
+      &:nth-child(2) {
+        display: none;
+      }
+      &:nth-child(3) {
+        transform: translateY(-6px) rotate(45deg);
+      }
+    }
+  }
+
+  .logoClose {
+    display: none;
+  }
+
+  .phone2 {
+    display: none;
+  }
+  
+  .basket2 {
+   display: none;
+  }
+
+  .headerBottom {
+    width: 140px;
+    height: 374px;
+    border-radius: 5px;
+    background: variables.$white;
+    box-shadow: 0px 4px 38px 0px rgba(0, 0, 0, 0.10);
+    position: absolute;
+    top: 100px;
+    left:initial;
+    right: 27px;
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .headerBottomActive {
+    width: 140px;
+    height: 374px;
+    border-radius: 5px;
+    background: variables.$white;
+    box-shadow: 0px 4px 38px 0px rgba(0, 0, 0, 0.10);
+    position: absolute;
+    top: 100px;
+    left:initial;
+    right: 27px;
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .navList {
+    @include mixins.flex(flex, center, initial);
+    margin-top: 19px;
+    gap: 12px;
+  }
+
+  .signIn {
+    color: variables.$main-color;
+    font-weight: variables.$font-weight900;
+    margin: 0;
+    margin-top: 10px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .header {
+    padding: 13px 0 0 0;
+  }
+
+  .deliveryHeaderUp {
+    display: initial;
+  }
+  
+  .deliveryPasta {
+    color: variables.$price-color;
+    font-family: variables.$font-family;
+    font-size: variables.$font-size17;
+    font-weight: variables.$font-weight600;
+  }
+
+  .townDelivery {
+    color: variables.$main-color;
+  }
+
+  .topTimeBlock {
+    @include mixins.flex(flex, center, center);
+    gap: 20px;
+    margin-top: 9px;
+  }
+
+  .topTimeSubBlock, .timeDeliveryBlock {
+    @include mixins.flex(flex, center, center);
+    gap: 7px;
+  }
+
+  .img {
+    width: 18px;
+    height: 18px;
+    object-fit: cover;
+  }
+
+  .food, .timeDelivery, .rating, .time {
+    color: variables.$price-color;
+    font-family: variables.$font-family;
+    font-size: variables.$font-size13;
+    font-weight: variables.$font-weight700;
+  }
+
+  .rating {
+    color: variables.$price-color;
+    font-family: variables.$font-family;
+    font-size: variables.$font-size13;
+    font-weight: variables.$font-weight700;
+  }
+  
+  .button {
+    display: block;
+    width: 180px;
+    height: 42px;
+    border-radius: 28px;
+    background: variables.$request-call-backg;
+    cursor: pointer;
+    color: variables.$sign-in;
+    font-family: variables.$font-family;
+    font-size: variables.$font-size14;
+    font-weight: variables.$font-weight700;
+    margin-left: 170px;
+  }
+
+  .phone {
+    display: initial;
+    margin: 0;
+  }
+
+  .basket {
+    display: none;
+  }
+
+  .burger {
+    display: none;
+  }
+
+  .logoClose {
+    display: none;
+  }
+
+  .phone2 {
+    display: none;
+  }
+
+  .headerBottom {
+    @include mixins.flex(flex, space-between, center);
+    width: initial;
+    height: initial;
+    position: initial;
+    top: initial;
+    left:initial;
+    right: initial;
+    background: initial;
+    box-shadow: initial;
+    transition: initial;
+    opacity: initial;
+    pointer-events: initial;
+    border-radius: initial;
+    margin-top: 7px;
+  } 
+
+  .navList {
+    @include mixins.flex(flex, center, center);
+    flex-direction: row;
+    gap: 0;
+    margin-top: initial;
+  }
+
+  .navLink {
+    padding: 5px 15px;
+  }
+
+  .first {
+    padding: 5px 9px 5px 0px;
+  }
+  
+  .signIn {
+    padding: 5px 30px 5px 15px;
+    color: variables.$sign-in;
+    font-family: variables.$font-family;
+    font-size: variables.$font-size16;
+    font-weight: variables.$font-weight700;
+    margin: initial;
+  }
+
+  .basket2 {
+    @include mixins.flex(flex, center, center);
+    background: variables.$main-color;
+    border-radius: 8px;
+    margin: initial;
+    margin-top: initial;
+    color: variables.$price-color;
+    font-family: variables.$font-family;
+    font-size: variables.$font-size16;
+    font-weight: variables.$font-weight700;
+  
   }
 }
