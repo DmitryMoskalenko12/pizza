@@ -1,0 +1,10 @@
+@use '../../styles/variables.scss';
+
+.phone {
+  color: variables.$main-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size26;
+  font-weight: variables.$font-weight700;
+  text-transform: uppercase;
+  text-decoration: none;
+}

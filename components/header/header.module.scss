@@ -1,0 +1,46 @@
+@use '../../styles/variables.scss';
+@use '../../styles/mixins.scss';
+
+.header {
+  padding: 9px 11px 21px 11px;
+}
+
+.headerTop {
+  @include mixins.flex(flex, space-between, center);
+}
+
+.logo {
+  width: 60px;
+  height: 45px;
+  object-fit: cover;
+}
+
+.deliveryHeaderUp {
+  display: none;
+}
+
+.button {
+  display: none;
+}
+
+.phone {
+  display: none;
+}
+
+.basket {
+  display: none;
+}
+
+.burger {
+  width: 39px;
+  height: 27px;
+  @include mixins.flex(flex, center, center);
+  flex-direction: column;
+  gap: 9px;
+  cursor: pointer;
+  div {
+    width: 39px;
+    height: 3px;
+    background: variables.$burger-color;
+  }
+}
