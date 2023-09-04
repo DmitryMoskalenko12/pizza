@@ -9,3 +9,17 @@
   height: $height;
   object-fit: $fit;
 }
+
+@mixin parametrArrow {
+  width: 31px;
+  height: 31px;
+  border-radius: 27px;
+  background: rgba(247, 210, 45, 0.90);
+}
+
+@mixin parametrAfter {
+  color: #231F20;
+  font-family: swiper-icons;
+  font-size: 15px;
+  font-weight: 900;
+}
