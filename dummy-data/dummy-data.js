@@ -10,3 +10,12 @@ export const navDataLink = [
   {content: 'Комбо', href: '/', id: 10},
   {content: 'Контакти', href: '/', id: 11},
 ]
+
+export const newSliderProductData = [
+  {path: '/images/pizza.webp', name: 'Карбонара', price: 120, id:1},
+  {path: '/images/pizza.webp', name: 'Карбонара', price: 100, id:2},
+  {path: '/images/pizza.webp', name: 'Карбонара', price: 140, id:3},
+  {path: '/images/pizza.webp', name: 'Карбонара', price: 80, id:4},
+  {path: '/images/pizza.webp', name: 'Карбонара', price: 130, id:5},
+  {path: '/images/pizza.webp', name: 'Карбонара', price: 100, id:6},
+]

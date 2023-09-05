@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import store from '../store/store';
 import Layout from '@/components/layout/layout';
 import '../components/main-slider/main-slider.scss';
+import '../components/new-product-slider/new-product-slider.scss';
 
 export default function App({ Component, pageProps }) {
   return (

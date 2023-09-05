@@ -13,7 +13,6 @@ const MainSlider = () => {
       scrollbar={{ draggable: true }}
       pagination={{ clickable: true }}
       navigation
-  /*     effect='coverflow' */
       grabCursor = {true}
       breakpoints={{
         320: {
@@ -32,7 +31,7 @@ const MainSlider = () => {
           spaceBetween: 30,
           slidesPerView: 3.8,
           centeredSlides: true,
-          initialSlide: 2       
+          initialSlide: 2
         },
         
       }}

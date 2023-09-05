@@ -1,0 +1,23 @@
+@use '../../styles/variables.scss';
+
+.headerH1 {
+  color: variables.$price-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size19;
+  font-weight: variables.$font-weight700;
+  margin: 0;
+}
+
+.headerH2 {
+  color: variables.$main-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size21;
+  font-weight: variables.$font-weight800;
+}
+
+.headerH3 {
+  color: variables.$title-product;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size10;
+  font-weight: variables.$font-weight800;
+}
