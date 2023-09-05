@@ -1,0 +1,107 @@
+@use '../../styles/variables.scss';
+@use '../../styles/mixins.scss';
+
+.cardSubBlock {
+ @include mixins.flex(flex, space-between, center);
+ gap: 10px;
+}
+
+.img {
+  width: 103px;
+  height: 103px;
+  object-fit: cover;
+}
+
+.h3 {
+  color: variables.$title-product;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size10;
+  font-weight: variables.$font-weight800;
+  margin: 0;
+}
+
+.descr {
+  color: variables.$descr-product-burger;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size10;
+  font-weight: variables.$font-weight500;
+  line-height: 13px;
+  margin: 0;
+  margin-top: 5px;
+}
+
+.priceBasketBlock {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.price {
+  color: variables.$price-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size22;
+  font-weight: variables.$font-weight700;
+}
+
+.button {
+  padding: 0;
+  color: variables.$payment-delivery;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size14;
+  font-weight: variables.$font-weight700;
+}
+
+@media (min-width: 768px) {
+  .cardSubBlock {
+    gap: 23px;
+   }
+
+  .img {
+    width: 122px;
+    height: 122px;
+  }
+
+  .h3 {
+    font-size: variables.$font-size12;
+  }
+  
+  .descr {
+    line-height: 16px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .cardSubBlock {
+    @include mixins.flex(flex, center, center);
+    flex-direction: column;
+    gap: 8px;
+   }
+
+  .img {
+    width: 253px;
+    height: 253px;
+  }
+
+  .h3 {
+    font-size: variables.$font-size24;
+  }
+  
+  .descr {
+    font-size: variables.$font-size13;
+    line-height: 19px;
+    margin-top: 14px;
+  }
+
+  .priceBasketBlock {
+    gap: 30px;
+    margin-top: 22px;
+  }
+
+  .price {
+    font-size: variables.$font-size15;
+  }
+  
+  .button {
+    color: variables.$white;
+  }
+}

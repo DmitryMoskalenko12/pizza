@@ -1,0 +1,22 @@
+@use '../../styles/variables.scss';
+
+.pizza1 {
+  padding: 23px 10px 0 10px;
+}
+
+.h2 {
+  margin: 0;
+  font-size: variables.$font-size24;
+}
+
+@media (min-width: 768px) {
+  .pizza1 {
+    padding: 38px 20px 0 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .pizza1 {
+    padding: 46px 0 0 0;
+  }
+}

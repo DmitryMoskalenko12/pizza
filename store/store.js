@@ -1,5 +1,8 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import newProductSlider from '../components/new-product-slider/new-product-slider-slice';
+import pasta1 from '../components/pasta1/pasta1Slice';
+import pizza1 from '../components/pizza1/pizza1Slice';
+import gamburgers from '../components/gamburgers/gamburgersSlice';
 
 const stringMiddleware = () => (next) => (action) => {
   if (typeof action === 'string') {
@@ -12,7 +15,10 @@ const stringMiddleware = () => (next) => (action) => {
 
 const store = configureStore({
   reducer: {
-    newProductSlider
+    newProductSlider,
+    pasta1,
+    pizza1,
+    gamburgers
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(stringMiddleware),

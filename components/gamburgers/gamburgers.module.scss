@@ -1,0 +1,22 @@
+@use '../../styles/variables.scss';
+
+.gamburgers {
+  padding: 23px 10px 0 10px;
+}
+
+.h2 {
+  margin: 0;
+  font-size: variables.$font-size24;
+}
+
+@media (min-width: 768px) {
+  .gamburgers {
+    padding: 38px 20px 0 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .gamburgers {
+    padding: 46px 0 0 0;
+  }
+}
