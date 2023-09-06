@@ -1,0 +1,139 @@
+@use '../../styles/variables.scss';
+@use '../../styles/mixins.scss';
+
+.stock {
+  position: relative;
+  padding: 40px 10px 0 10px;
+}
+
+.h2 {
+  color: variables.$our;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size20;
+  font-weight: variables.$font-weight800;
+  text-align: center;
+  margin: 0;
+}
+
+.partTitle {
+  color: variables.$main-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size20;
+  font-weight: variables.$font-weight800;
+}
+
+.stockBlock {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 
+  "a a";
+  justify-content: center;
+  margin-top: 18px;
+  gap: 12px;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  &:nth-child(1) {
+    grid-area: a;
+  }
+}
+
+.button {
+  width: 97px;
+  height: 33px;
+  border-radius: 23px;
+  color: variables.$our;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size10;
+  font-weight: variables.$font-weight700;
+  margin: 0 auto;
+  padding: 0;
+  margin-top: 22px;
+}
+
+.girlImg {
+  position: absolute;
+  right: 0;
+  bottom: -50px;
+}
+
+@media (min-width: 768px) {
+  .stock {
+    padding: 40px 20px 0 20px;
+  }
+
+  .h2 {
+    font-size: variables.$font-size24;
+  }
+  
+  .partTitle {
+    font-size: variables.$font-size24;
+  }
+
+  .stockBlock {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "a a"
+    "a a";
+    margin-top: 30px;
+    gap: 18px;
+  }
+
+  .button {
+    width: 160px;
+    height: 48px;
+    font-size: variables.$font-size14;
+    margin-top: 30px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .stock {
+    padding: 64px 0 0 0;
+  }
+
+  .h2 {
+    font-size: variables.$font-size44;
+  }
+  
+  .partTitle {
+    font-size: variables.$font-size44;
+  }
+
+  .stockBlock {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "a a"
+    "a a";
+    margin-top: 30px;
+    gap: 18px;
+  }
+
+  .button {
+    margin-top: 49px;
+    color: variables.$white;
+  }
+
+  .girlImg {
+    /* width: 160px;
+    object-fit: cover;
+    object-position: top;
+    height: 250px; */
+    width: 88px;
+    object-fit: contain;
+    object-position: top;
+    height: 158px;  
+  }
+}
+
+@media (min-width: 1440px) {
+  .girlImg {
+    width: 160px;
+    object-fit: cover;
+    object-position: top;
+    height: 250px;
+  }
+}

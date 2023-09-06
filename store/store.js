@@ -3,6 +3,7 @@ import newProductSlider from '../components/new-product-slider/new-product-slide
 import pasta1 from '../components/pasta1/pasta1Slice';
 import pizza1 from '../components/pizza1/pizza1Slice';
 import gamburgers from '../components/gamburgers/gamburgersSlice';
+import stock from '../components/stock/stockSlice';
 
 const stringMiddleware = () => (next) => (action) => {
   if (typeof action === 'string') {
@@ -18,7 +19,8 @@ const store = configureStore({
     newProductSlider,
     pasta1,
     pizza1,
-    gamburgers
+    gamburgers,
+    stock
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(stringMiddleware),

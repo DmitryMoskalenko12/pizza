@@ -31,7 +31,7 @@ const NewProduct = () => {
               media="(min-width: 320px)"
               srcSet="/images/man320.webp"
             />
-            <img className='img-man' src={'/images/firstSection/picture768.webp'} alt='You will see women' width={317} height={360}/>
+            <img className='img-man' src={'/images/man768.webp'} alt='You will see man' width={111} height={286}/>
           </picture>
         <div className='new-product-slider'>
           <Swiper className='swiper-new-product'
