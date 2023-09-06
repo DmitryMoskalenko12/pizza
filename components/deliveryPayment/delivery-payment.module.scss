@@ -1,0 +1,122 @@
+@use '../../styles/variables.scss';
+@use '../../styles/mixins.scss';
+
+.deliveryPayment {
+  padding: 26px 11px 0 11px;
+  background: variables.$backg-color-del-pay ;
+}
+
+.h2 {
+  color: variables.$main-color;
+  text-align: center;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size20;
+  font-weight: variables.$font-weight800;
+  margin: 0;
+}
+
+.deliveryBlock {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, minmax(94px, auto));
+  justify-content: center;
+  gap: 43px;
+  margin-top: 46px;
+  padding: 0 23px 0 23px;
+}
+
+.subBlock {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: 14px;
+  background: variables.$white;
+  box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.03);
+}
+
+.imgBlock {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 77px;
+  height: 77px;
+  border-radius: 100%;
+  background: variables.$white;
+  @include mixins.flex(flex, center, center);
+}
+
+.descr {
+  color: variables.$payment-delivery;
+  text-align: center;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size10;
+  font-weight: variables.$font-weight700;
+  margin: 0;
+  margin-bottom: 16px;
+}
+
+.map {
+  display: block;
+  width: 300px;
+  height: 322px;
+  border-radius: 14px;
+  margin: 0 auto;
+  margin-top: 26px;
+}
+
+@media (min-width: 768px) {
+  .deliveryPayment {
+    padding: 42px 20px 0 20px;
+  }
+
+  .h2 {
+    font-size: variables.$font-size24;
+  }
+
+  .deliveryBlock {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(2, minmax(100px, auto));
+    gap: 0;
+    row-gap: 58px;
+    column-gap: 30px;
+    margin-top: 58px;
+    padding: 0 94px 0 94px;
+  }
+
+  .map {
+    display: block;
+    width: 720px;
+    height: 322px;
+    border-radius: 14px;
+    margin: 0 auto;
+    margin-top: 26px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .deliveryPayment {
+    padding: 56px 0 74px 0;
+  }
+
+  .h2 {
+    font-size: variables.$font-size30;
+  }
+
+  .deliveryBlock {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(1, minmax(104px, auto));
+    row-gap: 0;
+    margin-top: 63px;
+    padding: 0;
+  }
+
+  .map {
+    display: block;
+    width: 100%;
+    margin-top: 32px;
+  }
+}

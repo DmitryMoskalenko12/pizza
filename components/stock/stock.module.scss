@@ -3,7 +3,7 @@
 
 .stock {
   position: relative;
-  padding: 40px 10px 0 10px;
+  padding: 40px 10px 39px 10px;
 }
 
 .h2 {
@@ -57,12 +57,12 @@
 .girlImg {
   position: absolute;
   right: 0;
-  bottom: -50px;
+  bottom: 0;
 }
 
 @media (min-width: 768px) {
   .stock {
-    padding: 40px 20px 0 20px;
+    padding: 40px 20px 39px 20px;
   }
 
   .h2 {
@@ -92,7 +92,7 @@
 
 @media (min-width: 1200px) {
   .stock {
-    padding: 64px 0 0 0;
+    padding: 64px 0 60px 0;
   }
 
   .h2 {
