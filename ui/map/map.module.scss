@@ -1,0 +1,27 @@
+  .map {
+    display: block;
+    width: 300px;
+    height: 322px;
+    border-radius: 14px;
+    margin: 0 auto;
+    margin-top: 26px;
+  }
+
+@media (min-width: 768px) {
+  .map {
+    display: block;
+    width: 720px;
+    height: 322px;
+    border-radius: 14px;
+    margin: 0 auto;
+    margin-top: 26px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .map {
+    display: block;
+    width: 100%;
+    margin-top: 32px;
+  }
+}

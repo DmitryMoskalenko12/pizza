@@ -8,7 +8,7 @@ export const navDataLink = [
   {content: 'Антипасті', href: '/', id: 8},
   {content: 'Акції', href: '/', id: 9},
   {content: 'Комбо', href: '/', id: 10},
-  {content: 'Контакти', href: '/', id: 11},
+  {content: 'Контакти', href: '/contactPage', id: 11},
 ]
 
 export const newSliderProductData = [

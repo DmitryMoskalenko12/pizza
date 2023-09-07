@@ -57,15 +57,6 @@
   margin-bottom: 16px;
 }
 
-.map {
-  display: block;
-  width: 300px;
-  height: 322px;
-  border-radius: 14px;
-  margin: 0 auto;
-  margin-top: 26px;
-}
-
 @media (min-width: 768px) {
   .deliveryPayment {
     padding: 42px 20px 0 20px;
@@ -84,15 +75,6 @@
     column-gap: 30px;
     margin-top: 58px;
     padding: 0 94px 0 94px;
-  }
-
-  .map {
-    display: block;
-    width: 720px;
-    height: 322px;
-    border-radius: 14px;
-    margin: 0 auto;
-    margin-top: 26px;
   }
 }
 
@@ -114,9 +96,4 @@
     padding: 0;
   }
 
-  .map {
-    display: block;
-    width: 100%;
-    margin-top: 32px;
-  }
 }

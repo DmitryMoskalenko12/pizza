@@ -1,0 +1,57 @@
+@use '../../styles/variables.scss';
+@use '../../styles/mixins.scss';
+
+.contacts {
+  padding: 0 10px 0 10px;
+}
+
+.map {
+  width: 300px;
+  height: 322px;
+  margin: 0;
+}
+
+.phone {
+  display: block;
+  margin-top: 28px;
+}
+
+.address {
+  color: variables.$our;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size16;
+  font-weight: variables.$font-weight700;
+  font-variant: small-caps;
+  font-style: normal;
+  margin-top: 10px;
+}
+
+.del {
+  color: variables.$our;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size12;
+  font-weight: variables.$font-weight600;
+  font-variant: small-caps;
+  margin-top: 11px;
+}
+
+@media (min-width: 1200px) {
+  .contacts {
+    padding: 0 37px 0 43px;
+  }
+  
+  .phone {
+    margin-top: 43px;
+    font-size: variables.$font-size38;
+  }
+  
+  .address {
+    font-size: variables.$font-size26;
+    margin-top: 18px;
+  }
+  
+  .del {
+    font-size: variables.$font-size15;
+    margin-top: 10px;
+  }
+}
