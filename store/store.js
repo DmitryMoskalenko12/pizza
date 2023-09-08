@@ -4,6 +4,7 @@ import pasta1 from '../components/pasta1/pasta1Slice';
 import pizza1 from '../components/pizza1/pizza1Slice';
 import gamburgers from '../components/gamburgers/gamburgersSlice';
 import stock from '../components/stock/stockSlice';
+import basket from '../components/basket/basketSlice';
 
 const stringMiddleware = () => (next) => (action) => {
   if (typeof action === 'string') {
@@ -20,7 +21,8 @@ const store = configureStore({
     pasta1,
     pizza1,
     gamburgers,
-    stock
+    stock,
+    basket
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(stringMiddleware),

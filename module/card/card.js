@@ -3,7 +3,7 @@ import Image from 'next/image';
 import HeaderH from '@/ui/headerH/headerH';
 import Button from '@/ui/button/button';
 
-const Card = ({path, titleName, price, descr}) => {
+const Card = ({path, titleName, price, descr, getProduct, id}) => {
   return (
     <article className={classes.cardBlock}>
       <div className={classes.cardSubBlock}>
@@ -15,7 +15,7 @@ const Card = ({path, titleName, price, descr}) => {
       </div>
       <div className={classes.priceBasketBlock}>
         <div className={classes.price}>від {price} грн</div>
-        <Button clazz={classes.button}>В кошик</Button>
+        <Button id={id} getProduct={getProduct} clazz={classes.button}>В кошик</Button>
       </div>
     </article>
   )

@@ -1,0 +1,44 @@
+@use '../../styles/variables.scss';
+@use '../../styles/mixins.scss';
+
+.wrapper {
+  padding: 30px 10px 44px 10px;
+}
+
+.h2 {
+  color: variables.$main-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size26;
+  font-weight: variables.$font-weight800;
+}
+
+.hr {
+  margin: 0;
+  opacity: 0.2;
+  margin-top: 20px;
+}
+
+.cardWrapper {
+  margin-top: 20px;
+}
+
+.line {
+  margin: 0;
+  opacity: 0.2;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.emptyBasket {
+  color: variables.$our;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size19;
+  font-weight: variables.$font-weight700;
+  text-align: center;
+}
+
+@media(min-width: 1200px) {
+  .wrapper {
+    padding: 30px 160px 103px 160px;
+  }
+}

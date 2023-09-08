@@ -15,7 +15,7 @@ const Stock = () => {
            <div className={classes.stockBlock}>
               {
                 stockData.map(({path, id}) => {
-                  return <Image className={classes.img} key={id} src={path} width={541} height={405}/>
+                  return <Image className={classes.img} key={id} src={path} width={541} height={405} alt='This is stock'/>
                 })
               }
            </div>

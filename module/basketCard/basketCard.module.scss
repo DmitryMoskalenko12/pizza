@@ -1,0 +1,156 @@
+@use '../../styles/variables.scss';
+@use '../../styles/mixins.scss';
+
+.card {
+  @include mixins.flex(flex, center, center);
+  flex-direction: column;
+}
+
+.cardSubBlock {
+  @include mixins.flex(flex, space-between, center);
+}
+
+.img {
+  width: 71px;
+  height: 71px;
+  object-fit: cover;
+  margin-right: 75px;
+}
+
+.descrBlock {
+  display: none;
+}
+
+.price {
+  display: none;
+}
+
+.incDec {
+  @include mixins.flex(flex, center, center);
+  gap: 20px;
+  width: 93px;
+  height: 32px;
+  border-radius: 8px;
+  background: variables.$request-call-backg;
+  margin-right: 34px;
+}
+
+.dec {
+  color: variables.$sign-in;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size21;
+  font-weight: variables.$font-weight400;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.number {
+  color: variables.$sign-in;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size18;
+  font-weight: variables.$font-weight700;
+}
+
+.inc {
+  color: variables.$sign-in;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size21;
+  font-weight: variables.$font-weight400;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.delete {
+  width: 27px;
+  height: 27px;
+  @include mixins.flex(flex, center, center);
+  background: none;
+  border-radius: 100%;
+  color: rgba($color: variables.$delete, $alpha: 0.5);
+  border: 1px solid rgba($color: variables.$delete, $alpha: 0.5);
+  font-size: variables.$font-size58;
+  font-weight: variables.$font-weight400;
+  cursor: pointer;
+}
+
+.descrBlock2 {
+  @include mixins.flex(flex, center, initial);
+  flex-direction: column;
+}
+
+.h3 {
+  color: variables.$our;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size18;
+  font-weight: variables.$font-weight700;
+  margin-top: 13px;
+}
+
+.descr {
+  width: 300px;
+  color: variables.$burger-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size13;
+  font-weight: variables.$font-weight500;
+  line-height: 19px;
+}
+
+@media (min-width: 768px) {
+  .img {
+    margin-right: 30px;
+  }
+
+  .descrBlock2 {
+    display: none;
+  }
+
+  .price {
+    display: block;
+    color: variables.$main-color;
+    text-align: center;
+    font-family: variables.$font-family;
+    font-size: variables.$font-size24;
+    font-weight: variables.$font-weight800;
+    margin-right: 30px;
+  }
+
+  .descrBlock {
+    @include mixins.flex(flex, center, initial);
+    flex-direction: column;
+    margin-right: 20px;
+  }
+
+}
+
+@media (min-width: 1200px) {
+  .img {
+    margin-right: 20px;
+  }
+
+  .descrBlock2 {
+    display: none;
+  }
+
+  .price {
+    margin-right: 33px;
+  }
+
+  .h3 {
+    font-size: variables.$font-size19;
+    margin-top: 13px;
+  }
+  
+  .descr {
+    width: 409px;
+    margin-top: 9px;
+  }
+
+  .descrBlock {
+    @include mixins.flex(flex, center, initial);
+    flex-direction: column;
+    margin-right: 0px;
+  }
+
+}

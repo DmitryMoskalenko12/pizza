@@ -1,0 +1,161 @@
+@use '../../styles/variables.scss';
+@use '../../styles/mixins.scss';
+
+.logo {
+  display: none;
+}
+
+.steps {
+  @include mixins.flex(flex, center, flex-start);
+  gap: 21px;
+  margin-top: 16px;
+}
+
+.stepsBlock {
+  @include mixins.flex(flex, center, center);
+  flex-direction: column;
+  width: 100px;
+}
+
+.stepsCircleBlock {
+  position: relative;
+  @include mixins.flex(flex, space-between, center);
+  &:after {
+    content: '------';
+    position: absolute;
+    right: -55px;
+  }
+}
+
+.circleBlock3 {
+  &:after {
+    content: '';
+    position: absolute;
+  }
+}
+
+.circle {
+  width: 36px;
+  height: 36px;
+  @include mixins.flex(flex, center, center);
+  border: 2px solid variables.$main-color;
+  border-radius: 100%;
+  color: variables.$main-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size15;
+  font-weight: variables.$font-weight700;
+}
+
+.circleActive {
+  width: 36px;
+  height: 36px;
+  @include mixins.flex(flex, center, center);
+  background: variables.$main-color;
+  color: variables.$price-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size15;
+  font-weight: variables.$font-weight700;
+  border-radius: 100%;
+}
+
+.line {
+  position: absolute;
+  right: 51%;
+  transform: translateX(-51%);
+}
+
+.line2 {
+  right: 22%;
+  transform: translateX(-22%);
+}
+
+.line3 {
+  display: none;
+}
+
+.stepsTitle {
+  color: rgba(105, 111, 122, 0.95);
+  font-family: variables.$font-family;
+  font-size: variables.$font-size11;
+  font-weight: variables.$font-weight600;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.stepsTitleActive {
+  color: rgba(14, 12, 13, 0.80);
+  text-align: center;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size11;
+  font-weight: variables.$font-weight600;
+}
+
+.hr {
+  position: absolute;
+  height: 1px;
+  top: 153px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.2;
+}
+
+@media (min-width: 375px) {
+  .stepsCircleBlock {
+    &:after {
+      content: '------';
+      right: -62px;
+    }
+  }
+  .circleBlock3 {
+    &:after {
+      content: '';
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .hr {
+    top: 163px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .logo {
+    display: block;
+  }
+
+  .steps {
+    margin-top: 0;
+  }
+
+  .stepsTitle {
+    font-size: variables.$font-size14;
+    margin-top: 10px;
+  }
+
+  .stepsBlock {
+    width: 153px;
+  }
+
+  .hr {
+    top: 100px;
+  }
+
+  .stepsCircleBlock {
+    &:after {
+      content: '--------------';
+      right: -115px;
+    }
+  }
+  .circleBlock3 {
+    &:after {
+      content: '';
+    }
+  }
+}

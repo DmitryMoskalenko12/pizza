@@ -5,12 +5,35 @@ import Telefon from "@/ui/telefon/telefon";
 import Link from "next/link";
 import cn from "classnames";
 import classes from './header.module.scss';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { navDataLink } from "@/dummy-data/dummy-data";
+import HeaderBasket from "../headerBasket/headerBasket";
+import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 
 const Header = (props) => {
   const [activeSideMenu, setActiveSideMenu] = useState(false);
-  
+  const [showBasketHeader, setShowBasketHeader] = useState(false);
+  const [showBasketHeader2, setShowBasketHeader2] = useState(false);
+  const pathName = useRouter().pathname;
+  const basketData = useSelector(state => state.basket.basketArr);
+
+  useEffect(() => {
+   if ((window.screen.availWidth <= 992) && (pathName === '/basketPage')) {
+    localStorage.setItem('basketHeader', true)
+    setShowBasketHeader(localStorage.getItem('basketHeader'))
+   } else {
+    localStorage.removeItem('basketHeader');
+    setShowBasketHeader(false)
+   }
+
+   if ((window.screen.availWidth > 992) && (pathName === '/basketPage')) {
+    localStorage.setItem('basketHeader', true)
+    setShowBasketHeader(localStorage.getItem('basketHeader'))
+    setShowBasketHeader2(true)
+   }
+  },[showBasketHeader, pathName])
+
   const onSideMenuActive = () => {
     setActiveSideMenu(active => !active)
   }
@@ -22,7 +45,7 @@ const Header = (props) => {
   return (
     <header className={classes.header}>
       <div className="container">
-       <div className={classes.wrapper}>
+       {showBasketHeader && showBasketHeader2 ? null : <div className={classes.wrapper}>
         <div className={classes.headerTop}>
           <Logo clazz={classes.logo} src={'/images/logo.webp'} width={90} height={45} alt={'You will see logo'}/>
 
@@ -54,10 +77,10 @@ const Header = (props) => {
 
           <Button clazz={classes.button}>Замовити дзвінок</Button>
           <Telefon clazz={classes.phone}>38 099 611 76 93</Telefon>
-          <Link href={'/'} className={classes.basket}>
+          <Link href={'/basketPage'} className={classes.basket}>
             <span>Кошик</span>
             <span>|</span>
-            <span>1</span>
+            <span>{basketData.length}</span>
           </Link>
 
           <div onClick={onSideMenuActive} className={cn(classes.burger, {[classes.burgerActive]: activeSideMenu})}>
@@ -89,14 +112,17 @@ const Header = (props) => {
 
            <Link className={classes.signIn} href={'/'}>Увійти</Link>
            <Telefon clazz={classes.phone2}>38 099 611 76 93</Telefon>
-           <Link href={'/'} className={classes.basket2}>
+           <Link href={'/basketPage'} className={classes.basket2}>
               <span>Кошик</span>
               <span>|</span>
-              <span>1</span>
+              <span>{basketData.length}</span>
            </Link>
         </div>
-       </div>
-      </div>   
+       </div>}
+      </div>  
+      {
+        showBasketHeader ? <HeaderBasket/> : null
+      } 
     </header>
   )
 }
