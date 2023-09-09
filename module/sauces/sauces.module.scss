@@ -1,0 +1,86 @@
+@use '../../styles/variables.scss';
+@use '../../styles/mixins.scss';
+
+.wrapper {
+  margin-top: 38px;
+}
+
+.h2 {
+  color: variables.$main-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size20;
+  font-weight: variables.$font-weight700;
+}
+
+.saucesWrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 173px);
+  grid-auto-rows: 173px;
+  gap: 25px;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+.saucesCard {
+  @include mixins.flex(flex, flex-start, center);
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  border: 1.5px solid variables.$border-color;
+  background: variables.$white;
+  padding: 0 24px 0 24px;
+  cursor: pointer;
+}
+
+.img {
+  width: 77px;
+  height: 71px;
+  object-fit: cover;
+  margin-top: 14px;
+}
+
+.h3 {
+  color: variables.$black;
+  text-align: center;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size13;
+  font-weight: variables.$font-weight600;
+  margin-top: 11px;
+}
+
+.price {
+  color: variables.$color-red;
+  text-align: center;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size14;
+  font-weight:  variables.$font-weight700;
+  margin-top: 10px;
+}
+
+.active {
+  border: 2.5px solid rgba(247, 210, 45, 0.40);
+}
+
+
+@media(min-width: 768px) {
+  .saucesWrapper {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 173px);
+  }
+}
+
+@media(min-width: 1200px) {
+  .wrapper {
+    margin-top: 40px;
+  }
+
+  .h2 {
+    font-size: variables.$font-size24;
+  }
+
+  .saucesWrapper {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

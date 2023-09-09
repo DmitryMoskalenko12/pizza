@@ -49,6 +49,15 @@ export const gamburgers = [
   {path: '/images/pizza4.webp', titleName: 'З креветками та трюфелями', descr: 'Домашня паста феттуччине, вершковий соус, креветки, трюфельна олія, чорний перець, пармезан.350 г', price: 500, count: 1, id:20}
 ]
 
+export const basketSliderData = [
+ {path: '/images/add1.webp', titleName:'Молочний коктейль', descr: 'Молочний коктейль з приємним ароматом.', price: 120, count: 1, id: 21},
+ {path: '/images/add2.webp', titleName:'Молочний коктейль', descr: 'Молочний коктейль з приємним ароматом.', price: 100, count: 1, id: 22},
+ {path: '/images/add3.webp', titleName:'Молочний коктейль', descr: 'Молочний коктейль з приємним ароматом.', price: 70, count: 1, id: 23},
+ {path: '/images/add1.webp', titleName:'Молочний коктейль', descr: 'Молочний коктейль з приємним ароматом.', price: 140, count: 1, id: 24},
+ {path: '/images/add2.webp', titleName:'Молочний коктейль', descr: 'Молочний коктейль з приємним ароматом.', price: 110, count: 1, id: 25},
+ {path: '/images/add3.webp', titleName:'Молочний коктейль', descr: 'Молочний коктейль з приємним ароматом.', price: 125, count: 1, id: 26},
+]
+
 export const stockData = [
   {path: '/images/cake.webp', id:1},
   {path: '/images/cake1.webp', id:2},
@@ -57,3 +66,13 @@ export const stockData = [
   {path: '/images/cake1.webp', id:5},
 ]
 
+export const saucesData = [
+  {path: '/images/sous6.webp', titleName: 'Сирний соус', price: 120, count: 1, id:27},
+  {path: '/images/sous5.webp', titleName: 'Малинове варення', price: 70, count: 1, id:28},
+  {path: '/images/sous6.webp', titleName: 'Сирний соус', price: 100, count: 1, id:29},
+  {path: '/images/sous5.webp', titleName: 'Малинове варення', price: 90, count: 1, id:30},
+  {path: '/images/sous6.webp', titleName: 'Малинове варення', price: 130, count: 1, id:31},
+  {path: '/images/sous5.webp', titleName: 'Сирний соус', price: 60, count: 1, id:32},
+  {path: '/images/sous6.webp', titleName: 'Малинове варення', price: 110, count: 1, id:33},
+  {path: '/images/sous5.webp', titleName: 'Сирний соус', price: 50, count: 1, id:34},
+]

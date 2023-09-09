@@ -1,7 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { basketSliderData } from "@/dummy-data/dummy-data";
+import { saucesData } from "@/dummy-data/dummy-data";
 
 const initialState = {
-  basketArr: []
+  basketArr: [],
+  basketSliderData: basketSliderData,
+  basketSaucesData: saucesData
 }
 
 const basketSlice = createSlice({

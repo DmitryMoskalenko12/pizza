@@ -1,0 +1,99 @@
+@use '../../styles/variables.scss';
+@use '../../styles/mixins.scss';
+
+.h2-basket {
+  color: variables.$main-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size20;
+  font-weight: variables.$font-weight700;
+  margin-top: 38px;
+}
+
+.slider-basket {
+  margin-top: 28px;
+}
+
+.slider-img-basket {
+  width: 71px;
+  height: 71px;
+  object-fit: cover;
+  margin-right: 15px;
+  margin-left: 17px;
+}
+
+.slider-descr {
+  color: variables.$black;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size13;
+  font-weight: variables.$font-weight600;
+}
+
+.slider-price {
+  color: variables.$color-red;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size14;
+  font-weight: variables.$font-weight700;
+  margin-top: 8px;
+}
+
+.card-basket-wrap {
+  height: 99px;
+  @include mixins.flex(flex, space-between, center);
+  border-radius: 12px;
+  border: 1.5px solid variables.$border-color;
+  background: variables.$white;
+  cursor: pointer;
+}
+
+.card-descr-price {
+  @include mixins.flex(flex, initial, flex-start);
+  flex-direction: column;
+  text-align: left;
+}
+
+.slider-basket .swiper-button-next {
+  width: 31px;
+  height: 31px;
+  border-radius: 27px;
+  background: variables.$main-color;
+  top: 60%;
+  right: 5px;
+  &::after {
+    content: 'next';
+    color: variables.$price-color;
+    font-family: swiper-icons;
+    font-size: variables.$font-size15;
+    font-weight: variables.$font-weight900;
+  }
+}
+
+.slider-basket .swiper-button-prev {
+  width: 31px;
+  height: 31px;
+  border-radius: 27px;
+  background: variables.$main-color;
+  top: 60%;
+  left: 9px;
+  &::after {
+    content: 'prev';
+    color: variables.$price-color;
+    font-family: swiper-icons;
+    font-size: variables.$font-size15;
+    font-weight: variables.$font-weight900;
+  }
+}
+
+.card-basket-active {
+  border: 2.5px solid rgba(247, 210, 45, 0.40);
+}
+
+.post-exit-active {
+  opacity: 0;
+  transition: all 400ms ease-in;
+}
+
+@media(min-width: 1200px) {
+  .h2-basket {
+    font-size: variables.$font-size24;
+  }
+}
