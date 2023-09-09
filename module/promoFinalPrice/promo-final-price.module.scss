@@ -1,0 +1,110 @@
+@use '../../styles/variables.scss';
+@use '../../styles/mixins.scss';
+
+.wrapper {
+  @include mixins.flex(flex, space-between, flex-start);
+  flex-direction: column;
+  margin-top: 35px;
+  gap: 24px;
+}
+
+.form {
+  @include mixins.flex(flex, center, flex-start);
+  flex-direction: column;
+}
+
+.inputBlock {
+  @include mixins.flex(flex, center, center);
+  margin-top: 28px;
+}
+
+.promo {
+  color: variables.$color-red;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size20;
+  font-weight: variables.$font-weight600;
+}
+
+.input {
+  width: 190px;
+  height: 43px;
+  padding: 7px 0 7px 22px;
+  border-radius: 8px 0 0 8px;
+  border: 1.5px solid variables.$border-color;
+  &::placeholder {
+    color: variables.$descr-product-burger;
+    font-family: variables.$font-family;
+    font-size: variables.$font-size13;
+    font-weight: variables.$font-weight600;
+    opacity: 0.82;
+  }
+}
+
+.button {
+  width: 110px;
+  height: 43px;
+  border-radius: 0 8px 8px 0;
+  color: variables.$price-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size13;
+  font-weight: variables.$font-weight700;
+}
+
+.blockFinalPrice {
+  @include mixins.flex(flex, space-between, center);
+  gap: 25px;
+}
+
+.sum {
+  color: variables.$nav-link-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size18;
+  font-weight: variables.$font-weight600;
+}
+
+.finalSum {
+  color: variables.$main-color;
+  text-align: right;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size20;
+  font-weight: variables.$font-weight800;
+}
+
+@media(min-width: 768px) {
+  .wrapper {
+    @include mixins.flex(flex, space-between, flex-end);
+    flex-direction: row;
+    margin-top: 35px;
+    gap: 24px;
+  } 
+}
+
+@media(min-width: 1200px) {
+  .wrapper {
+    @include mixins.flex(flex, space-between, flex-end);
+    flex-direction: row;
+    margin-top: 43px;
+    gap: 24px;
+  } 
+
+  .promo {
+    font-size: variables.$font-size22;
+  }
+
+  .input {
+    width: 220px;
+  }
+  
+  .button {
+    width: 133px;
+  }
+
+  .sum {
+    font-size: variables.$font-size21;
+  }
+
+  .finalSum {
+    font-size: variables.$font-size36;
+  }
+  
+}

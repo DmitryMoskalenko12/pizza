@@ -8,6 +8,7 @@ import Sauces from '@/module/sauces/sauces';
 import { filterId } from '@/helpers/helpers';
 import { getBasketProduct } from './basketSlice';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import PromoFinalPrice from '@/module/promoFinalPrice/promo-final-price';
 
 const Basket = () => {
   const basketData = useSelector(state => state.basket.basketArr);
@@ -87,6 +88,7 @@ const Basket = () => {
 
             <BasketSlider sliderData={sliderData} addAdditProduct={addAdditionalProduct}/>
             <Sauces sauces={saucesData} addAdditProductSauces={addAdditionalProductSauces}/>
+            <PromoFinalPrice/>
         </div>
       </div>
     </section>

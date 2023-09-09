@@ -67,7 +67,7 @@ export const stockData = [
 ]
 
 export const saucesData = [
-  {path: '/images/sous6.webp', titleName: 'Сирний соус', price: 120, count: 1, id:27},
+  {path: '/images/sous6.webp', titleName: 'Сирний соус', price:120, count: 1, id:27},
   {path: '/images/sous5.webp', titleName: 'Малинове варення', price: 70, count: 1, id:28},
   {path: '/images/sous6.webp', titleName: 'Сирний соус', price: 100, count: 1, id:29},
   {path: '/images/sous5.webp', titleName: 'Малинове варення', price: 90, count: 1, id:30},
