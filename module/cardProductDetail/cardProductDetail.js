@@ -2,7 +2,6 @@ import classes from './cardProductDetail.module.scss';
 import Image from 'next/image';
 import HeaderH from '@/ui/headerH/headerH';
 import SliderDetail from '../sliderDetail/slider-detail';
-import Button from '@/ui/button/button';
 import cn from 'classnames';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
