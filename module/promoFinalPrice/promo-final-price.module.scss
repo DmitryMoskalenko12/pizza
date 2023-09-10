@@ -2,7 +2,7 @@
 @use '../../styles/mixins.scss';
 
 .wrapper {
-  @include mixins.flex(flex, space-between, flex-start);
+  @include mixins.flex(flex, space-between, center);
   flex-direction: column;
   margin-top: 35px;
   gap: 24px;

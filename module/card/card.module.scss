@@ -4,6 +4,7 @@
 .cardSubBlock {
  @include mixins.flex(flex, space-between, center);
  gap: 10px;
+ cursor: pointer;
 }
 
 .img {

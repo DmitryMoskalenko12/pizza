@@ -37,6 +37,48 @@
   text-align: center;
 }
 
+.backCheck {
+  @include mixins.flex(flex, center, center);
+  flex-direction: column;
+  margin-top: 32px;
+}
+
+.check {
+  width: 224px;
+  height: 55px;
+  @include mixins.flex(flex, center, center);
+  gap: 14px;
+  color: variables.$price-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size15;
+  font-weight: variables.$font-weight800;
+  border-radius: 8px;
+  background: #F7D22D;
+  text-decoration: none;
+}
+
+.back {
+  @include mixins.flex(flex, center, center);
+  gap: 10px;
+  color: variables.$sign-in;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size15;
+  font-weight: variables.$font-weight700;
+  text-decoration: none;
+  margin-top: 14px;
+}
+
+@media(min-width: 768px) {
+  .backCheck {
+    @include mixins.flex(flex, space-between, center);
+    flex-direction: row-reverse;
+  }
+
+  .back {
+    margin-top: 0;
+  }
+}
+
 @media(min-width: 1200px) {
   .wrapper {
     padding: 30px 160px 103px 160px;

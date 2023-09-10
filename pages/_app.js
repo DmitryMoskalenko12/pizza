@@ -6,6 +6,7 @@ import Layout from '@/components/layout/layout';
 import '../components/main-slider/main-slider.scss';
 import '../components/new-product-slider/new-product-slider.scss';
 import '../module/basketSlider/basketSlider.scss';
+import '../module/sliderDetail/slider-detail.scss';
 
 export default function App({ Component, pageProps }) {
   return (

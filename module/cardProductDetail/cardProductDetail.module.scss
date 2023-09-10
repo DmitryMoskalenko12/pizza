@@ -1,0 +1,273 @@
+@use '../../styles/variables.scss';
+@use '../../styles/mixins.scss';
+
+.wrapContent {
+  @include mixins.flex(flex, center, center);
+  flex-direction: column;
+}
+
+.card {
+  width: 300px;
+  height: 465px;
+  border-radius: 12px;
+  background: variables.$white;
+  box-shadow: variables.$box-shadow-content;
+  @include mixins.flex(flex, initial, center);
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+.block1 {
+  position: relative;
+}
+
+.img {
+  width: 251px;
+  height: 251px;
+  object-fit: cover;
+  margin-top: 64px;
+}
+
+.close {
+  position: absolute;
+  width: 26px;
+  height: 36.659px;
+  color: variables.$main-color;
+  border: 0;
+  top: 3px;
+  right: -8px;
+  background: transparent;
+  font-size: variables.$font-size67;
+  font-family: variables.$font-family;
+  font-weight: variables.$font-weight400;
+  cursor: pointer;
+}
+
+.h3 {
+  color: variables.$our;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size15;
+  font-weight: variables.$font-weight800;
+  margin-top: 18px;
+}
+
+.descr {
+  color: variables.$descr-product-burger;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size11;
+  font-weight: variables.$font-weight600;
+  margin-top: 10px;
+}
+
+.components {
+  color: variables.$descr-product-burger;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size10;
+  font-weight: variables.$font-weight600;
+  margin-top: 10px;
+}
+
+.sizesPizza {
+  @include mixins.flex(flex, initial, center);
+  flex-wrap: wrap;
+  padding: 0 20px 0 20px;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.small {
+  width: 132.994px;
+  height: 34px;
+  @include mixins.sizesProp;
+}
+
+.middle {
+  width: 118.486px;
+  height: 34px;
+  @include mixins.sizesProp;
+}
+
+.big {
+  width: 113.668px;
+  height: 34px;
+  @include mixins.sizesProp;
+}
+
+.thin {
+  width: 138.127px;
+  height: 34px;
+  @include mixins.sizesProp;
+}
+
+.traditional {
+  width: 132.705px;
+  height: 34px;
+  @include mixins.sizesProp;
+}
+
+.button {
+  width: 260px;
+  height: 59px;
+  color: variables.$price-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size13;
+  font-weight: variables.$font-weight800;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background: variables.$main-color;
+}
+
+.activeSize {
+  background: variables.$main-color;
+  color: variables.$price-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size11;
+  font-weight: variables.$font-weight700;
+}
+
+.close2 {
+  display: none;
+}
+
+@media(min-width: 768px) {
+  .card {
+    width: 700px;
+    @include mixins.flex(flex, space-between, flex-start);
+    flex-direction: row;
+    gap: 35px;
+  }
+
+  .block2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .sizesPizza {
+    @include mixins.flex(flex, flex-start, center);
+    padding: 0;
+  }
+
+  .h3 {
+    position: relative;
+  }
+
+  .img {
+    margin-top: 60%;
+    margin-left: 45px;
+  }
+
+  .close2 {
+    position: absolute;
+    @include mixins.flex(flex, center, center);
+    width: 26px;
+    height: 36.659px;
+    color: variables.$main-color;
+    border: 0;
+    top: -9px;
+    right: -50px;
+    background: transparent;
+    font-size: variables.$font-size67;
+    font-family: variables.$font-family;
+    font-weight: variables.$font-weight400;
+  }
+
+  .close {
+    display: none;
+  }
+  
+  .wrapContent {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .small {
+    width: 110px;
+  }
+  
+  .middle {
+    width: 98px;
+  }
+  
+  .big {
+    width: 102px;
+  }
+  
+  .thin {
+    width: 169px;
+  }
+  
+  .traditional {
+    width: 150px;
+  }
+}
+
+@media(min-width: 1200px) {
+  .card {
+    width: 959px;
+    gap: 15px;
+  }
+
+  .block2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .sizesPizza {
+    @include mixins.flex(flex, flex-start, center);
+    padding: 0;
+  }
+
+  .h3 {
+    font-size: variables.$font-size20;
+    position: relative;
+  }
+
+  .descr {
+    font-size: variables.$font-size14;
+  }
+
+  .components {
+    font-size: variables.$font-size11;
+  }
+
+  .img {
+    width: 504px;
+    height: 504px;
+    margin-top: 13%;
+    margin-left: 45px;
+  }
+
+  .close2 {
+    position: absolute;
+    @include mixins.flex(flex, center, center);
+    width: 26px;
+    height: 36.659px;
+    color: variables.$main-color;
+    border: 0;
+    top: -7px;
+    right: -43px;
+    background: transparent;
+    font-size: variables.$font-size67;
+    font-family: variables.$font-family;
+    font-weight: variables.$font-weight400;
+    cursor: pointer;
+  }
+
+  .close {
+    display: none;
+  }
+  
+  .wrapContent {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .button {
+    width: 330px;
+    height: 59px;
+  }
+}

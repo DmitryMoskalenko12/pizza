@@ -5,6 +5,8 @@ import pizza1 from '../components/pizza1/pizza1Slice';
 import gamburgers from '../components/gamburgers/gamburgersSlice';
 import stock from '../components/stock/stockSlice';
 import basket from '../components/basket/basketSlice';
+import sliderDetail from '../module/sliderDetail/slider-detail-slice';
+import cardDetail from '../module/cardProductDetail/cardProductDetailSlice';
 
 const stringMiddleware = () => (next) => (action) => {
   if (typeof action === 'string') {
@@ -22,7 +24,9 @@ const store = configureStore({
     pizza1,
     gamburgers,
     stock,
-    basket
+    basket,
+    sliderDetail,
+    cardDetail
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(stringMiddleware),

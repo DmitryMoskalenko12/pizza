@@ -3,10 +3,10 @@ import Image from 'next/image';
 import HeaderH from '@/ui/headerH/headerH';
 import Button from '@/ui/button/button';
 
-const Card = ({path, titleName, price, descr, getProduct, id}) => {
+const Card = ({path, titleName, price, descr, getProduct, id, getIdProd}) => {
   return (
     <article className={classes.cardBlock}>
-      <div className={classes.cardSubBlock}>
+      <div onClick={() => getIdProd(id)} className={classes.cardSubBlock}>
         <Image className={classes.img} src={path} width={253} height={253} alt='You will see pizza'/>
         <div className={classes.descrBlock}>
           <HeaderH h={'h3'} clazz={classes.h3}>{titleName}</HeaderH>
