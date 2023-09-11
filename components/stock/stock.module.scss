@@ -115,6 +115,15 @@
   .button {
     margin-top: 49px;
     color: variables.$white;
+    transition: variables.$transition;
+    &:hover {
+      transition: variables.$transition;
+      background: variables.$hover;
+      color: variables.$black;
+    }
+    &:active {
+      background: variables.$active;
+    }
   }
 
   .girlImg {

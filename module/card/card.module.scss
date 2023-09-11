@@ -104,5 +104,22 @@
   
   .button {
     color: variables.$white;
+    transition: variables.$transition;
+    &:hover {
+      transition: variables.$transition;
+      background: variables.$hover;
+      color: variables.$black;
+    }
+    &:active {
+      background: variables.$active;
+    }
+    &:disabled {
+      transition: variables.$transition;
+      &:hover {
+        transition: variables.$transition;
+        background: variables.$delete;
+        color: variables.$white;
+      }
+    }
   }
 }

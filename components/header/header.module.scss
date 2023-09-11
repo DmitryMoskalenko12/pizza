@@ -313,11 +313,28 @@
     font-size: variables.$font-size14;
     font-weight: variables.$font-weight700;
     margin-left: 170px;
+    transition: variables.$transition;
+    &:hover {
+      transition: variables.$transition;
+      color: variables.$white;
+      background: variables.$background-active;
+    }
+    &:active {
+      color: variables.$active;
+    }
   }
 
   .phone {
     display: initial;
     margin: 0;
+    transition: variables.$transition;
+    &:hover {
+      transition: variables.$transition;
+      color: variables.$hover;
+    }
+    &:active {
+      color: variables.$active;
+    }
   }
 
   .basket {
@@ -362,6 +379,14 @@
 
   .navLink {
     padding: 5px 15px;
+    transition: variables.$transition;
+    &:hover {
+      transition: variables.$transition;
+      color:variables.$star;
+    }
+    &:active {
+      color: variables.$active;
+    }
   }
 
   .first {
@@ -375,6 +400,14 @@
     font-size: variables.$font-size16;
     font-weight: variables.$font-weight700;
     margin: initial;
+    transition: variables.$transition;
+    &:hover {
+      transition: variables.$transition;
+      color:variables.$star;
+    }
+    &:active {
+      color: variables.$active;
+    }
   }
 
   .basket2 {
@@ -387,6 +420,13 @@
     font-family: variables.$font-family;
     font-size: variables.$font-size16;
     font-weight: variables.$font-weight700;
-  
+    transition: variables.$transition;
+    &:hover {
+      transition: variables.$transition;
+      background: variables.$hover;
+    }
+    &:active {
+      background: variables.$active;
+    }
   }
 }

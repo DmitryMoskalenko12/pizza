@@ -297,10 +297,26 @@
   .socialLink {
     padding: 10px;
     opacity: 0.7;
+    transition: variables.$transition;
+    &:hover {
+      transition: variables.$transition;
+      color:variables.$star;
+    }
+    &:active {
+      color: variables.$active;
+    }
   }
 
   .socialLink1, .socialLink2  {
     padding-left: 0;
+    transition: variables.$transition;
+    &:hover {
+      transition: variables.$transition;
+      color:variables.$star;
+    }
+    &:active {
+      color: variables.$active;
+    }
   }
 
   .socialWrapper {
@@ -309,8 +325,23 @@
 
   .liButton {
     grid-area: a;
+    transition: variables.$transition;
+    &:hover {
+      transition: variables.$transition;
+      color: variables.$white;
+      background: variables.$background-active;
+    }
   }
 
+  .write {
+    transition: variables.$transition;
+    &:hover {
+    transition: variables.$transition;
+    color: variables.$white;
+    background: variables.$background-active;
+  }
+  
+  }
   .socialConnect {
     display: grid;
     grid-template-columns: repeat(4, 101px);
@@ -324,7 +355,13 @@
 
   .li, .liButton {
     a {
-      padding: 9px 34px 9px 34px;
+      padding: 9px 34px 9px 34px
+    }
+    transition: variables.$transition;
+    &:hover {
+      transition: variables.$transition;
+      color: variables.$white;
+      background: variables.$background-active;
     }
   }
 
@@ -365,5 +402,36 @@
   .order {
     margin: 0;
     margin-top: 20px;
+    transition: variables.$transition;
+    &:hover {
+      transition: variables.$transition;
+      color: variables.$white;
+      background: variables.$background-active;
+    }
+    &:active {
+      color: variables.$active;
+    }
+  }
+
+  .phone {
+    transition: variables.$transition;
+    &:hover {
+      transition: variables.$transition;
+      color: variables.$hover;
+    }
+    &:active {
+      color: variables.$active;
+    }
+  }
+
+  .link {
+    transition: variables.$transition;
+    &:hover {
+      transition: variables.$transition;
+      color:variables.$star;
+    }
+    &:active {
+      color: variables.$active;
+    }
   }
 }

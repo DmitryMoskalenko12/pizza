@@ -48,6 +48,15 @@
   font-family: variables.$font-family;
   font-size: variables.$font-size13;
   font-weight: variables.$font-weight700;
+  transition: variables.$transition;
+  &:hover {
+    transition: variables.$transition;
+    background: variables.$hover;
+    
+  }
+  &:active {
+    background: variables.$active;
+  }
 }
 
 .blockFinalPrice {

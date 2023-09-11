@@ -23,7 +23,10 @@ $backg-modal: linear-gradient(0deg, rgba(247, 210, 45, 0.40) 0%, rgba(247, 210, 
 $arrow-slider: rgba(247, 210, 45, 0.90);
 $delete: lightgrey;
 $box-shadow-content: 0px 4px 28px 0px rgba(0, 0, 0, 0.08), 0px 4px 28px 0px rgba(0, 0, 0, 0.08);
-
+$hover: #F2C519;
+$active: #FFDF00;
+$background-active: darkgray;
+$transition: 0.5s all;
 
 // font-size
 $font-size8: 8px;

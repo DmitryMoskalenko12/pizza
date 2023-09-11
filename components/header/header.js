@@ -10,7 +10,7 @@ import { navDataLink } from "@/dummy-data/dummy-data";
 import HeaderBasket from "../headerBasket/headerBasket";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
-import Modal from "@/module/modal/modal";
+
 const Header = (props) => {
   const [activeSideMenu, setActiveSideMenu] = useState(false);
   const [showBasketHeader, setShowBasketHeader] = useState(false);

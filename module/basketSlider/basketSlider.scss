@@ -96,4 +96,26 @@
   .h2-basket {
     font-size: variables.$font-size24;
   }
+
+  .slider-basket .swiper-button-next {
+    transition: variables.$transition;
+    &:hover {
+      transition: variables.$transition;
+      background: variables.$hover;
+    }
+    &:active {
+      background: variables.$active;
+    }
+  }
+  
+  .slider-basket .swiper-button-prev {
+    transition: variables.$transition;
+    &:hover {
+      transition: variables.$transition;
+      background: variables.$hover;
+    }
+    &:active {
+      background: variables.$active;
+    }
+  }
 }

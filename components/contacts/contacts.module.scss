@@ -43,6 +43,14 @@
   .phone {
     margin-top: 43px;
     font-size: variables.$font-size38;
+    transition: variables.$transition;
+    &:hover {
+      transition: variables.$transition;
+      color: variables.$hover;
+    }
+    &:active {
+      color: variables.$active;
+    }
   }
   
   .address {

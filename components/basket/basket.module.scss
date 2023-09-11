@@ -83,4 +83,16 @@
   .wrapper {
     padding: 30px 160px 103px 160px;
   }
+
+  .check {
+    transition: variables.$transition;
+    &:hover {
+      transition: variables.$transition;
+      background: variables.$hover;
+      
+    }
+    &:active {
+      background: variables.$active;
+    }
+  }
 }

@@ -165,10 +165,26 @@
   
   .slider-main .swiper-button-next {
     right: 66px;
+    transition: variables.$transition;
+    &:hover {
+      transition: variables.$transition;
+      background: variables.$hover;
+    }
+    &:active {
+      background: variables.$active;
+    }
   }
   
   .slider-main .swiper-button-prev {
     left: 66px;
+    transition: variables.$transition;
+    &:hover {
+      transition: variables.$transition;
+      background: variables.$hover;
+    }
+    &:active {
+      background: variables.$active;
+    }
   }
 }
 
