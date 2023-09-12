@@ -25,6 +25,12 @@ const Pizza1 = () => {
     dispatch(getId(id))
    }
 
+  const hideOverlay = (e) => {
+  if (e.target.getAttribute('data-modal')) {
+    setModal(false)
+  }
+  }
+
   return (
     <section className={classes.pizza1}>
       <div className="container">
@@ -33,9 +39,7 @@ const Pizza1 = () => {
            <CardList getIdProd={getIdProd} getProduct={getProduct} data={pizza1Data}/>
         </div>
       </div>
-      {
-        modal ? <Modal><CardProductDetail setModal={setModal}/></Modal> : null
-      }
+      <Modal modal={modal} hideOverlay={hideOverlay}><CardProductDetail setModal={setModal}/></Modal>
     </section>
   )
 }

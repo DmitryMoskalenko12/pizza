@@ -7,6 +7,7 @@ import stock from '../components/stock/stockSlice';
 import basket from '../components/basket/basketSlice';
 import sliderDetail from '../module/sliderDetail/slider-detail-slice';
 import cardDetail from '../module/cardProductDetail/cardProductDetailSlice';
+import stockDataCard from '../components/stockSection/stockSectionSlice';
 
 const stringMiddleware = () => (next) => (action) => {
   if (typeof action === 'string') {
@@ -26,7 +27,8 @@ const store = configureStore({
     stock,
     basket,
     sliderDetail,
-    cardDetail
+    cardDetail,
+    stockDataCard
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(stringMiddleware),

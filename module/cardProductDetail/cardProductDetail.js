@@ -28,7 +28,7 @@ const CardProductDetail = ({setModal}) => {
     {content: 'Традиційна', clazz: classes.traditional, price: 50, id: 5},
   ];
 
-  const res = {...product, price: product.price + (sizes.find(item => item.id === activeSize)?.price ?? 0) + (sliderDetailData.find(item => item.id === getId)?.price ?? 0)};
+  const res = {...product, price: product?.price + (sizes.find(item => item.id === activeSize)?.price ?? 0) + (sliderDetailData.find(item => item.id === getId)?.price ?? 0)};
   
   const getSizes = (id) => {
    setActiveSize(id)
@@ -37,13 +37,13 @@ const CardProductDetail = ({setModal}) => {
   return(
      <article className={classes.card}>
       <div className={classes.block1}>
-        <Image className={classes.img} src={product.path} width={251} height={251} alt='Ypu will see food'/>
+        <Image className={classes.img} src={product?.path || '/images/pizza1.webp'} width={251} height={251} alt='You will see food'/>
         <button onClick={() => setModal(false)} className={classes.close}>&times;</button>
       </div>
        
       <div className={classes.wrapContent}>
         <div className={classes.block2}>
-          <HeaderH h={'h2'} clazz={classes.h3}>{product.titleName} <button onClick={() => setModal(false)} className={classes.close2}>&times;</button></HeaderH>
+          <HeaderH h={'h2'} clazz={classes.h3}>{product?.titleName} <button onClick={() => setModal(false)} className={classes.close2}>&times;</button></HeaderH>
           <div className={classes.descr}>25 см, традиційне тісто, 360 г</div>
           <div className={classes.components}>Моцарелла, соус альфредо</div>
         </div>

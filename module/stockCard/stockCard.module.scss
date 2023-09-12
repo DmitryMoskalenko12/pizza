@@ -1,0 +1,72 @@
+@use '../../styles/variables.scss';
+@use '../../styles/mixins.scss';
+
+.stockCard {
+  border-radius: 14px 14px 14px 14px;
+  background: variables.$white;
+  box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.06);
+}
+
+.img {
+  width: 100%;
+  height: 138px;
+  object-fit: cover;
+  border-radius: 14px 14px 0 0;
+}
+
+.content {
+  padding: 12px 20px 20px 20px;
+}
+
+.h3 {
+  color: variables.$our;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size16;
+  font-weight: variables.$font-weight700;
+}
+
+.descr {
+  color: variables.$title-product;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size12;
+  font-weight: variables.$font-weight500;
+  line-height: 20px;
+  margin-top: 10px;
+}
+
+.link {
+  @include mixins.flex(flex, center, center);
+  width: 159px;
+  height: 45px;
+  border-radius: 8px;
+  background: variables.$main-color;
+  text-decoration: none;
+  color: variables.$payment-delivery;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size14;
+  font-weight: variables.$font-weight700;
+  margin-top: 14px;
+}
+
+@media(min-width: 1200px) {
+  .h3 {
+    font-size: variables.$font-size20;
+  }
+
+  .descr {
+    font-size: variables.$font-size13;
+    margin-top: 7px;
+  }
+
+  .link {
+    transition: variables.$transition;
+    &:hover {
+      transition: variables.$transition;
+      background: variables.$hover;
+    }
+    &:active {
+      background: variables.$active;
+    }
+  }
+  
+}

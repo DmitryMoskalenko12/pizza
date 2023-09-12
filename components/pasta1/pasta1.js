@@ -25,6 +25,12 @@ const Pasta1 = () => {
    dispatch(getId(id))
   }
 
+  const hideOverlay = (e) => {
+    if (e.target.getAttribute('data-modal')) {
+      setModal(false)
+    }
+   }
+
   return (
     <section className={classes.pasta1}>
       <div className="container">
@@ -32,10 +38,8 @@ const Pasta1 = () => {
            <HeaderH h={'h2'} clazz={classes.h2}>Паста</HeaderH>
            <CardList getIdProd={getIdProd} getProduct={getProduct} data={pasta1Data}/>
         </div>
-      </div>
-      {
-        modal ? <Modal><CardProductDetail setModal={setModal}/></Modal> : null
-      }
+      </div>   
+       <Modal modal={modal} hideOverlay={hideOverlay}><CardProductDetail setModal={setModal}/></Modal>
     </section>
   )
 }

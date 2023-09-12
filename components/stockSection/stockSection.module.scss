@@ -1,0 +1,64 @@
+@use '../../styles/variables.scss';
+
+.stockSection {
+  position: relative;
+  padding: 16px 10px 40px 10px;
+}
+
+.h2 {
+  color: variables.$main-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size26;
+  font-weight: variables.$font-weight700;
+}
+
+.manImg {
+  position: absolute;
+  top: 222px;
+  left: 0px;
+  height: 326px;
+  z-index: -1;
+}
+
+.girlImg {
+  position: absolute;
+  top: 1441px;
+  right: 0px;
+  height: 142px;
+  z-index: -1;
+}
+
+@media (min-width: 768px) {
+ .manImg { 
+  left: 0px;
+ }
+
+ .girlImg {
+  right: 0px;
+  height: 145px;
+}
+}
+
+@media(min-width: 1200px) {
+  .stockSection {
+    padding: 29px 0 27px 0;
+  }
+
+  .h2 {
+    font-size: variables.$font-size30;
+  }
+
+  .girlImg {
+    position: absolute;
+    top: 1441px;
+    right: 0px;
+    height: 250px;
+    z-index: -1;
+  }
+
+  .manImg {
+    top: 400px;
+    left: 0px;
+    height: 395px;;
+  }
+}

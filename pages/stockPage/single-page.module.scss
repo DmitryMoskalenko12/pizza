@@ -1,0 +1,32 @@
+@use '../../styles/mixins.scss';
+@use '../../styles/variables.scss';
+
+.single {
+  padding: 20px 20px 20px 20px;
+  @include mixins.flex(flex, center, center);
+  flex-direction: column;
+}
+
+.img {
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.h3 {
+  color: variables.$nav-link-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size16;
+  font-weight: variables.$font-weight700;
+  margin-top: 15px;
+}
+
+.descr {
+  color: variables.$title-product;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size12;
+  font-weight: variables.$font-weight500;
+  line-height: 20px;
+  margin-top: 20px;
+  text-align: center;
+}
