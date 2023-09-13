@@ -1,7 +1,8 @@
+import Bonus from "@/module/bonus/bonus";
 const PersonalPage = () => {
   return (
     <>
-    увійшов
+    <Bonus/>
     </>
   )
 }

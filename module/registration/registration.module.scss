@@ -1,0 +1,93 @@
+@use '../../styles/variables.scss';
+@use '../../styles/mixins.scss';
+
+.formWrapper {
+  position: relative;
+  padding: 25px 20px 20px 20px;
+  width: 300px;
+  height: 400px;
+  border-radius: 12px;
+  background: variables.$white;
+  box-shadow: variables.$box-shadow-content;
+}
+
+.form {
+  @include mixins.flex(flex, center, flex-start);
+  flex-direction: column;
+}
+
+.nameLabel {
+  color: variables.$burger-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size13;
+  font-weight: variables.$font-weight600;
+  margin-top: 28px;
+}
+
+.phoneLabel {
+  color: variables.$burger-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size13;
+  font-weight: variables.$font-weight600;
+  margin-top: 10px;
+}
+
+.close {
+  @include mixins.flex(flex, center, center);
+  position: absolute;
+  width: 26px;
+  height: 36.659px;
+  color: variables.$main-color;
+  border: 0;
+  top: 19px;
+  right: 12px;
+  background: transparent;
+  font-size: variables.$font-size67;
+  font-family: variables.$font-family;
+  font-weight: variables.$font-weight400;
+  cursor: pointer;
+}
+
+.h2 {
+  color: variables.$main-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size25;
+  font-weight: variables.$font-weight800;
+}
+
+.name, .phone {
+  width: 260px;
+  height: 48px;
+  padding: 13px 0 10px 10px;
+  border-radius: 8px;
+  border: 1.5px solid variables.$border-color;
+  margin-top: 10px;
+}
+
+.button {
+  width: 260px;
+  height: 55px;
+  border-radius: 8px;
+  background: variables.$main-color;
+  color: variables.$white;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size15;
+  font-weight: variables.$font-weight800;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.logInOrSignUp {
+  width: 260px;
+  height: 55px;
+  border-radius: 8px;
+  background: variables.$main-color;
+  color: variables.$white;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size15;
+  font-weight: variables.$font-weight800;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+}

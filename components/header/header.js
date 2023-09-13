@@ -10,14 +10,17 @@ import { navDataLink } from "@/dummy-data/dummy-data";
 import HeaderBasket from "../headerBasket/headerBasket";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
+import Modal from "@/module/modal/modal";
+import Registration from "@/module/registration/registration";
 
 const Header = (props) => {
   const [activeSideMenu, setActiveSideMenu] = useState(false);
   const [showBasketHeader, setShowBasketHeader] = useState(false);
   const [showBasketHeader2, setShowBasketHeader2] = useState(false);
+  const [signIn, setSignIn] = useState(false);
   const pathName = useRouter().pathname;
   const basketData = useSelector(state => state.basket.basketArr);
-
+ 
   useEffect(() => {
    if ((window.screen.availWidth <= 992) && (pathName === '/basketPage')) {
     localStorage.setItem('basketHeader', true)
@@ -40,6 +43,12 @@ const Header = (props) => {
 
   const onSideMenuClose = () => {
     setActiveSideMenu(false)
+  }
+
+  const hideOverlay = (e) => {
+    if (e.target.getAttribute('data-modal')) {
+      setSignIn(false)
+    }
   }
 
   return (
@@ -109,7 +118,7 @@ const Header = (props) => {
              </ul>
            </nav>
 
-           <Link className={classes.signIn} href={'/'}>Увійти</Link>
+           <button onClick={() => setSignIn(true)} className={classes.signIn}>Увійти</button>
            <Telefon clazz={classes.phone2}>38 099 611 76 93</Telefon>
            <Link href={'/basketPage'} className={classes.basket2}>
               <span>Кошик</span>
@@ -122,6 +131,9 @@ const Header = (props) => {
       {
         showBasketHeader ? <HeaderBasket/> : null
       } 
+      {
+        <Modal hideOverlay={hideOverlay} modal={signIn}><Registration setSignIn={setSignIn}/></Modal>
+      }
     </header>
   )
 }
