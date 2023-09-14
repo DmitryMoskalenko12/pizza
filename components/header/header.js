@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import Modal from "@/module/modal/modal";
 import Registration from "@/module/registration/registration";
+import { useSession } from "next-auth/react";
 
 const Header = (props) => {
   const [activeSideMenu, setActiveSideMenu] = useState(false);
@@ -20,7 +21,9 @@ const Header = (props) => {
   const [signIn, setSignIn] = useState(false);
   const pathName = useRouter().pathname;
   const basketData = useSelector(state => state.basket.basketArr);
- 
+  const {data: session, status} = useSession();
+  const loading = status === 'authenticated';
+
   useEffect(() => {
    if ((window.screen.availWidth <= 992) && (pathName === '/basketPage')) {
     localStorage.setItem('basketHeader', true)
@@ -112,13 +115,14 @@ const Header = (props) => {
              <ul className={classes.navList}>
                 {
                  navDataLink.map(({content, href, id}) => {
-                    return <li key={id}><Link className={cn(classes.navLink, {[classes.first]: id === 1})} href={href}>{content}</Link></li>
+                    return <li key={id}><Link onClick={() => setActiveSideMenu(false)} className={cn(classes.navLink, {[classes.first]: id === 1})} href={href}>{content}</Link></li>
                   })
                 }
              </ul>
            </nav>
-
-           <button onClick={() => setSignIn(true)} className={classes.signIn}>Увійти</button>
+            {
+              session && loading ? <Link className={classes.personal} href={'/personalPage'}>Особистий кабінет</Link> : <button onClick={() => {setSignIn(true); setActiveSideMenu(false)}} className={classes.signIn}>Увійти</button>
+            }
            <Telefon clazz={classes.phone2}>38 099 611 76 93</Telefon>
            <Link href={'/basketPage'} className={classes.basket2}>
               <span>Кошик</span>

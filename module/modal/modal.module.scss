@@ -14,6 +14,8 @@
 }
 
 .content {
+  width: max-content;
   @include mixins.flex(flex, center, center);
+  margin: 0 auto;
   margin-top: 92px;
 }

@@ -7,10 +7,12 @@ import '../components/main-slider/main-slider.scss';
 import '../components/new-product-slider/new-product-slider.scss';
 import '../module/basketSlider/basketSlider.scss';
 import '../module/sliderDetail/slider-detail.scss';
+import { SessionProvider } from 'next-auth/react';
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps: {session, ...pageProps}}) {
   return (
-    <Provider store={store}>
+    <SessionProvider session={session}>
+      <Provider store={store}>
       <Head>
         <title>Pizza</title>
         <meta name="description" content="This is pizza shop" />
@@ -20,6 +22,8 @@ export default function App({ Component, pageProps }) {
       <Layout>
         <Component {...pageProps} /> 
       </Layout> 
-    </Provider>
+     </Provider>
+    </SessionProvider>
+    
   )
 }

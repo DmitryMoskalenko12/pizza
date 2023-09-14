@@ -21,12 +21,20 @@ async function handler(req, res) {
 
   const hashPhone = await hashPassword(phone);
 
+  const cloneName = await db.collection('auth-pizza').findOne({name: name});
+ 
+  if (cloneName) {
+    res.status(422).json({message: 'Помилка, оберіть унікальне ім\'я'})
+    client.close();
+    return;
+  }
+
   const collection = await db.collection('auth-pizza').insertOne({
    name: name,
    phone: hashPhone
   })
 
-  res.status(200).json({ message: 'success'});
+  res.status(200).json({ message: 'Обліковий запис успішно створено'});
   client.close();
 }
 

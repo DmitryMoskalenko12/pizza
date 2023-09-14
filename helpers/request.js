@@ -1,5 +1,5 @@
  export const request = async (name, phone) => {
-  const request = await fetch('/api/signup', {
+  const request = await fetch('/api/auth/signup', {
     method: 'POST',
     body: JSON.stringify({name, phone}),
     headers: {
@@ -10,7 +10,7 @@
   const res = await request.json();
 
   if (!request.ok) {
-    throw new Error(`Error in path ${'/api/signUp'} status ${request.status}`)
+    throw new Error(`${res.message}`)
   }
 
   return res;

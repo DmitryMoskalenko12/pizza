@@ -5,7 +5,7 @@
   position: relative;
   padding: 25px 20px 20px 20px;
   width: 300px;
-  height: 400px;
+  height: 425px;
   border-radius: 12px;
   background: variables.$white;
   box-shadow: variables.$box-shadow-content;
@@ -90,4 +90,34 @@
   border: none;
   cursor: pointer;
   margin-top: 20px;
+}
+
+@media(min-width: 768px) {
+  .formWrapper {
+    width: 668px;
+    height: 425px;
+  }
+
+  .form {
+    @include mixins.flex(flex, center, center);
+  }
+
+  .h2 {
+    font-size: variables.$font-size32;
+  }
+
+  .close {
+    right: 175px;
+  }
+
+  .name, .phone, .button {
+    width: 345px;
+  }
+
+  .logInOrSignUp {
+    display: block;
+    width: 345px;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
 }
