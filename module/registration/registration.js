@@ -75,7 +75,7 @@ const Registration = ({setSignIn}) => {
       <button onClick={() => setSignIn(false)} className={classes.close}>&times;</button>
 
       {!signInOrSignUp ? <form onSubmit={onRequest} className={classes.form}>
-        <HeaderH h={'h2'} clazz={classes.h2}>Реєстрація на сайті</HeaderH>
+        <HeaderH h={'h2'} clazz={classes.h2}>Реєстрація</HeaderH>
         <label className={classes.nameLabel} htmlFor="name">Ім'я</label>
         <input onChange={(e) => setName(e.target.value)} className={classes.name} id='name' value={name} type="text" required placeholder="Ім'я"/>
 
