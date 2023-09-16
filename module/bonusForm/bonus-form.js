@@ -82,7 +82,7 @@ const BonusForm = () => {
           </form>
 
           <form onSubmit={onInputChangePhone} className={classes.formPhone}>
-            <label className={classes.phoneChange} htmlFor="phoneChange">Номер телефону</label>
+            <label className={classes.phoneChange} htmlFor="phoneChange">Старий номер телефону</label>
             <input id='phoneChange' onChange={e => setOldPhone(e.target.value)} value={oldPhone} className={classes.phone} type="number" placeholder="Введіть старий телефон"/>
             <label className={classes.phoneChange} htmlFor="phoneChangeNew">Новий номер телефону</label>
             <input id='phoneChangeNew' onChange={e => setNewPhone(e.target.value)} value={newPhone} className={classes.phone} type="number" placeholder="Новий телефон"/>
@@ -93,6 +93,7 @@ const BonusForm = () => {
               })}>{messagePhone}</div>
             <button className={classes.buttonChangePhone}>Змінити</button>
           </form>
+          <HeaderH clazz={classes.sign} h={'h2'}>Підписки</HeaderH>
           <button onClick={logoutHandler} className={classes.signOut}>Вихід</button>
         </div>
       </div>

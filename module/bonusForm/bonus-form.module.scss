@@ -81,6 +81,14 @@
   margin-top: 42px;
 }
 
+.sign {
+  color: variables.$main-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size24;
+  font-weight: variables.$font-weight800;
+  margin-top: 30px;
+}
+
 @media (min-width: 1200px) {
   .h2 {
     font-size: variables.$font-size30;
