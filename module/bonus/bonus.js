@@ -4,11 +4,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { signOut } from 'next-auth/react';
+import BonusForm from '../bonusForm/bonus-form';
 
 const Bonus = () => {
   const router = useRouter();
 
-  const logoutHandler =  async () => {
+  const logoutHandler = async () => {
     const data = await signOut({redirect: false, callbackUrl: "/"});
     router.push(data.url)
   }

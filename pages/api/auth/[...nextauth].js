@@ -32,7 +32,7 @@ export const authOptions = {
 
         client.close();
 
-        return {phone: user.phone}
+        return {name: user.name}
       },
       credentials: {
         name: {},

@@ -1,0 +1,65 @@
+@use '../../styles/variables.scss';
+@use '../../styles/mixins.scss';
+
+.bonusForm {
+  padding: 31px 10px 31px 10px;
+}
+
+.h2 {
+  color: variables.$main-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size24;
+  font-weight: variables.$font-weight800;
+}
+
+.formName, .formPhone {
+  position: relative;
+  @include mixins.flex(flex, center, flex-start);
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.nameChange, .phoneChange {
+  color: variables.$price-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size14;
+  font-weight: variables.$font-weight700;
+}
+
+.name, .phone {
+  width: 300px;
+  height: 48px;
+  padding: 10px 0 10px 19px;
+  border-radius: 8px;
+  border: 1.5px solid variables.$backg-color-del-pay;
+  background: variables.$input-backg;
+  margin-top: 6px;
+}
+
+.buttonChange, .buttonChangePhone {
+  width: 124.38px;
+  height: 48px;
+  background-color: variables.$main-color;
+  color: variables.$black;
+  border-radius: 8px;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size15;
+  font-weight: variables.$font-weight700;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.success, .successPhone {
+  font-family: variables.$font-family;
+  font-size: variables.$font-size13;
+  font-weight: variables.$font-weight400;
+  color: variables.$success;
+}
+
+.fail, .failPhone {
+  font-family: variables.$font-family;
+  font-size: variables.$font-size13;
+  font-weight: variables.$font-weight400;
+  color: variables.$fail;
+}

@@ -1,9 +1,9 @@
-import classes from './registration.module.scss';
 import HeaderH from '@/ui/headerH/headerH';
 import { request } from '@/helpers/request';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { signIn } from 'next-auth/react';
+import classes from './registration.module.scss';
 
 const Registration = ({setSignIn}) => {
   const [signInOrSignUp, setSignInOrSignUp] = useState(false);
@@ -12,12 +12,13 @@ const Registration = ({setSignIn}) => {
   const [success, setSuccess] = useState();
   const router = useRouter();
 
+
   const showSignInOrSignUp = () => {
    setSignInOrSignUp(sign => !sign);
   }
   
   useEffect(() => {
-   if (success === 'success') {
+   if (success === 'Вхід дозволено') {
     const closeModal = setTimeout(() => {
       setSignIn(false)
       setSuccess('')
@@ -56,16 +57,16 @@ const Registration = ({setSignIn}) => {
       name: name,
       phone: phone,
     })
-     
+
     if (!result.error) {
       router.replace('/personalPage');
       setName('');
       setPhone('');
-      setSuccess('Ви успішно авторизувалися!')
+      setSuccess('Вхід дозволено')
     } else {
       setName('');
       setPhone('');
-      setSuccess('Вхід не виконаний! Спробуйте ще раз!')
+      setSuccess(result.error)
     }
    }
   }
