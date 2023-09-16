@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { signIn } from 'next-auth/react';
 import classes from './registration.module.scss';
+import cn from 'classnames';
 
 const Registration = ({setSignIn}) => {
   const [signInOrSignUp, setSignInOrSignUp] = useState(false);
@@ -18,7 +19,7 @@ const Registration = ({setSignIn}) => {
   }
   
   useEffect(() => {
-   if (success === 'Вхід дозволено') {
+   if ((success === 'Обліковий запис успішно створено') || (success === 'Вхід дозволено')) {
     const closeModal = setTimeout(() => {
       setSignIn(false)
       setSuccess('')
@@ -27,7 +28,6 @@ const Registration = ({setSignIn}) => {
     return () => clearTimeout(closeModal);
    } else if (success?.length > 1 && success !== 'success') {
     const closeModal = setTimeout(() => {
-      setSignIn(false)
       setSuccess('')
     }, 3000);
 
@@ -82,7 +82,9 @@ const Registration = ({setSignIn}) => {
 
         <label className={classes.phoneLabel} htmlFor="phone">Телефон</label>
         <input className={classes.phone} onChange={(e) => setPhone(e.target.value)} id='phone' value={phone} type="number" required placeholder="Телефон"/>
-        {success}
+        <div className={cn({
+          [classes.success]: success === 'Обліковий запис успішно створено',
+          [classes.fail]: success !== 'Обліковий запис успішно створено'})}>{success}</div>
         <button className={classes.button}>Зареєструватися</button>
       </form>
        :
@@ -92,7 +94,9 @@ const Registration = ({setSignIn}) => {
         <input onChange={(e) => setName(e.target.value)} className={classes.name} id='name' value={name} type="text" required placeholder="Ім'я"/>
         <label className={classes.phoneLabel} htmlFor="phone">Телефон</label>
         <input onChange={(e) => setPhone(e.target.value)} className={classes.phone} id='phone' type="number" value={phone} required placeholder="Телефон"/>
-        {success}
+        <div className={cn({
+          [classes.success]: success === 'Вхід дозволено',
+          [classes.fail]: success !== 'Вхід дозволено'})}>{success}</div>
         <button className={classes.button}>Увійти</button>
       </form>}
 

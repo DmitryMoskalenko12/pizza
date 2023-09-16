@@ -92,6 +92,20 @@
   margin-top: 20px;
 }
 
+.success {
+  font-family: variables.$font-family;
+  font-size: variables.$font-size13;
+  font-weight: variables.$font-weight400;
+  color: variables.$success;
+}
+
+.fail {
+  font-family: variables.$font-family;
+  font-size: variables.$font-size13;
+  font-weight: variables.$font-weight400;
+  color: variables.$fail;
+}
+
 @media(min-width: 768px) {
   .formWrapper {
     width: 668px;
