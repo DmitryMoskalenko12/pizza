@@ -55,6 +55,7 @@
   font-size: variables.$font-size13;
   font-weight: variables.$font-weight400;
   color: variables.$success;
+  margin-top: 5px;
 }
 
 .fail, .failPhone {
@@ -62,4 +63,60 @@
   font-size: variables.$font-size13;
   font-weight: variables.$font-weight400;
   color: variables.$fail;
+  margin-top: 5px;
+}
+
+.signOut {
+  @include mixins.flex(flex, center, center);
+  width: 138px;
+  height: 52px;
+  border-radius: 8px;
+  background: variables.$backg-color-del-pay;
+  cursor: pointer;
+  border: none;
+  color: variables.$signOut;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size16;
+  font-weight: variables.$font-weight700;
+  margin-top: 42px;
+}
+
+@media (min-width: 1200px) {
+  .h2 {
+    font-size: variables.$font-size30;
+  }
+
+  .name, .phone {
+    width: 350px;
+    margin-top: 6px;
+  }
+
+  .nameChange, .phoneChange {
+   margin-top: 9px;
+  }
+
+  .buttonChange, .buttonChangePhone {
+    width: 116.38px;
+    height: 39px;
+    font-size: variables.$font-size14;
+    transition: variables.$transition;
+    &:hover {
+      transition: variables.$transition;
+      background: variables.$hover;
+    }
+    &:active {
+      background: variables.$active;
+    }
+  }
+
+  .signOut {
+    transition: variables.$transition;
+    &:hover {
+      transition: variables.$transition;
+      background: variables.$signOutLight;
+    }
+    &:active {
+      background: variables.$signOutMoreLight;
+    }
+  }
 }

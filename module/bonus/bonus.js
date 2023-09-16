@@ -2,17 +2,8 @@ import classes from './bonus.module.scss';
 import HeaderH from '@/ui/headerH/headerH';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { signOut } from 'next-auth/react';
-import BonusForm from '../bonusForm/bonus-form';
 
 const Bonus = () => {
-  const router = useRouter();
-
-  const logoutHandler = async () => {
-    const data = await signOut({redirect: false, callbackUrl: "/"});
-    router.push(data.url)
-  }
 
   return (
     <section className={classes.bonus}>
@@ -30,7 +21,6 @@ const Bonus = () => {
            <Link className={classes.link} href={'/stockPage'}>Всі наші акції</Link>
         </div>
       </div>
-      <button onClick={logoutHandler}>Вийти</button>
     </section>
   )
 }
