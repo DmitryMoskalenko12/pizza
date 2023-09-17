@@ -17,5 +17,11 @@
   width: max-content;
   @include mixins.flex(flex, center, center);
   margin: 0 auto;
-  margin-top: 92px;
+  margin-top: 65px;
+}
+
+@media(min-width: 768px) {
+  .content {
+    margin-top: 92px;
+  }
 }

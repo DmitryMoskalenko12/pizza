@@ -5,7 +5,7 @@
   position: relative;
   padding: 25px 20px 20px 20px;
   width: 300px;
-  height: 425px;
+  height: 445px;
   border-radius: 12px;
   background: variables.$white;
   box-shadow: variables.$box-shadow-content;
@@ -108,10 +108,18 @@
   margin-top: 5px;
 }
 
+.error {
+  color: variables.$fail;
+}
+
+.errorInput {
+  border: 1px solid variables.$fail;
+}
+
 @media(min-width: 768px) {
   .formWrapper {
     width: 668px;
-    height: 425px;
+    height: 455px;
   }
 
   .form {
@@ -141,6 +149,18 @@
 
 @media (min-width: 1200px) {
   .button {
+    transition: variables.$transition;
+    &:hover {
+      transition: variables.$transition;
+      background: variables.$hover;
+      color: variables.$black;
+    }
+    &:active {
+      background: variables.$active;
+    }
+  }
+
+  .logInOrSignUp {
     transition: variables.$transition;
     &:hover {
       transition: variables.$transition;
