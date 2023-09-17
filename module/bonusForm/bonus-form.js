@@ -106,6 +106,10 @@ const BonusForm = () => {
             </Form>}
           </Formik>
           <HeaderH clazz={classes.sign} h={'h2'}>Підписки</HeaderH>
+          <form className={classes.check}>
+            <input type="checkbox" className={classes.inputCheckbox} id='check' name="check"/>
+            <label className={classes.labelCheck} htmlFor="check">Повідомляти про бонуси, акції та нові продукти</label>
+          </form>
           <button onClick={logoutHandler} className={classes.signOut}>Вихід</button>
         </div>
       </div>

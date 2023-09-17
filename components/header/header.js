@@ -25,7 +25,7 @@ const Header = (props) => {
   const loading = status === 'authenticated';
 
   useEffect(() => {
-   if ((window.screen.availWidth <= 992) && (pathName === '/basketPage')) {
+   if ((window.screen.availWidth <= 992) && ((pathName === '/basketPage') || (pathName === '/orderPage'))) {
     localStorage.setItem('basketHeader', true)
     setShowBasketHeader(localStorage.getItem('basketHeader'))
    } else {
@@ -33,7 +33,7 @@ const Header = (props) => {
     setShowBasketHeader(false)
    }
 
-   if ((window.screen.availWidth > 992) && (pathName === '/basketPage')) {
+   if ((window.screen.availWidth > 992) && ((pathName === '/basketPage') || (pathName === '/orderPage'))) {
     localStorage.setItem('basketHeader', true)
     setShowBasketHeader(localStorage.getItem('basketHeader'))
     setShowBasketHeader2(true)

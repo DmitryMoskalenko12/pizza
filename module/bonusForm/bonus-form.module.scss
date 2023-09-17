@@ -97,6 +97,76 @@
   border: 1px solid variables.$fail;
 }
 
+.check {
+  position: relative;
+  @include mixins.flex(flex, center, flex-start);
+  margin-top: 13px;
+}
+
+.labelCheck {
+  color: variables.$price-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size14;
+  font-weight: variables.$font-weight700;
+  margin-left: 35px;
+}
+
+.labelCheck:before {
+  content: '';
+  display: block;
+  width: 19px;
+  height: 19px;
+  border: 1px solid variables.$main-color;
+  border-radius: 22px;
+  background-color: variables.$white;
+  position: absolute;
+  top: 3px;
+  left: 0;
+  z-index: 1;
+  transition: background .1s linear, border .1s linear;
+}
+
+.labelCheck:after {
+  content: "";
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 13px;
+  background: variables.$main-color;
+  background-size: 6px 7px;
+  position: absolute;
+  top: 10px;
+  left: 7px;
+  z-index: 2;
+  opacity: 0;
+}
+
+.inputCheckbox {
+  -webkit-appearance: none;
+  appearance: none;
+  position: absolute;
+}
+
+.inputCheckbox:checked + .labelCheck:before {
+  content:'';
+  background: transparent;
+}
+
+.inputCheckbox:checked + .labelCheck:after {
+  content:'';
+  opacity: 1;
+}
+
+@media (min-width: 768px) {
+  .check {
+    @include mixins.flex(flex, flex-start, flex-start);
+  }
+
+  .labelCheck {
+    margin-top: 3px;
+  }
+}
+
 @media (min-width: 1200px) {
   .h2 {
     font-size: variables.$font-size30;

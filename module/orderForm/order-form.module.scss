@@ -1,0 +1,47 @@
+@use '../../styles/variables.scss';
+@use '../../styles/mixins.scss';
+
+.orderForm {
+  @include mixins.flex(flex, center, flex-start);
+  flex-direction: column;
+}
+
+.label {
+  color: variables.$price-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size15;
+  font-weight: variables.$font-weight600;
+  margin-top: 14px;
+  &:first-child {
+    margin-top: 20px;
+  }
+}
+
+.textarea {
+  width: 300px;
+  height: 129px;
+  padding: 10px 0px 10px 20px;
+  border-radius: 7px;
+  border: 1.5px solid variables.$request-call-backg;
+  background: variables.$input-backg;
+  resize: none;
+  margin-top: 7px;
+}
+
+.input {
+  width: 300px;
+  height: 48px;
+  padding: 10px 0px 10px 20px;
+  border-radius: 7px;
+  background: variables.$input-backg;
+  border: 1.5px solid variables.$border-color;
+  margin-top: 7px;
+}
+
+.error {
+  color: variables.$fail;
+}
+
+.fail {
+  border: 1px solid variables.$fail;
+}

@@ -1,0 +1,19 @@
+@use '../../styles/variables.scss';
+@use '../../styles/mixins.scss';
+
+.wrapper {
+  padding: 30px 10px 40px 10px;
+}
+
+.hr {
+  box-shadow: variables.$hr;
+  opacity: 0.2;
+  margin: 0;
+}
+
+.h2 {
+  color: variables.$main-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size26;
+  font-weight: variables.$font-weight800;
+}
