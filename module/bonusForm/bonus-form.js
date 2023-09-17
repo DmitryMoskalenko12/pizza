@@ -4,12 +4,10 @@ import { useState, useEffect } from 'react';
 import cn from 'classnames';
 import { useRouter } from 'next/router';
 import { signOut } from 'next-auth/react';
+import {Formik, Form, Field, ErrorMessage} from 'formik';
+import * as Yup from 'yup';
 
 const BonusForm = () => {
-  const [oldName, setOldName] = useState('');
-  const [newName, setNewName] = useState('');
-  const [oldPhone, setOldPhone] = useState('');
-  const [newPhone, setNewPhone] = useState('');
   const [messageName, setMessageName] = useState();
   const [messagePhone, setMessagePhone] = useState();
   const [saveName, setSaveName] = useState();
@@ -27,9 +25,7 @@ const BonusForm = () => {
     () => clearTimeout(phone);
   },[messageName, messagePhone])
 
-  const onInputChangeName = async (e) => {
-   e.preventDefault();
-  
+  const onInputChangeName = async ({oldName, newName}) => {
     const request = await fetch('/api/userName/change-credentials', {
       method: 'PATCH',
       body: JSON.stringify({oldName: oldName, newName: newName}),
@@ -42,15 +38,12 @@ const BonusForm = () => {
 
     setMessageName(res.message);
     setSaveName(res.newName);
-    setNewName('');
-    setOldName('');
   }
   
-  const onInputChangePhone = async (e) => {
-    e.preventDefault();
+  const onInputChangePhone = async ({newPhone, oldPhone}) => {
       const request = await fetch('/api/userPhone/change-phone', {
         method: 'PATCH',
-        body: JSON.stringify({newPhone: newPhone, oldPhone: oldPhone, newName: saveName}),
+        body: JSON.stringify({newPhone: String(newPhone), oldPhone: String(oldPhone), newName: saveName}),
         headers: {
           'Content-Type': 'application/json'
         },
@@ -59,8 +52,6 @@ const BonusForm = () => {
       const res = await request.json();
 
       setMessagePhone(res.message);
-      setOldPhone('');
-      setNewPhone('');
    }
 
   return (
@@ -68,31 +59,52 @@ const BonusForm = () => {
       <div className="container">
         <div className={classes.wrapper}>
           <HeaderH clazz={classes.h2} h={'h2'}>Особисті дані</HeaderH>
-          <form onSubmit={onInputChangeName} className={classes.formName}>
-            <label className={classes.nameChange} htmlFor="nameChange">Старе ім'я</label>
-            <input id='nameChange' onChange={e => {setOldName(e.target.value)}} value={oldName} className={classes.name} type="text" placeholder="Старе ім'я"/>
-            <label className={classes.nameChange} htmlFor="nameConfirm">Нове ім'я</label>
-            <input id='nameConfirm' onChange={e => {setNewName(e.target.value)}} value={newName} className={classes.name} type="text" placeholder="Нове ім'я"/>
-            <div className={
-              cn({
-              [classes.success]: messageName === 'Ім\'я успішно змінене',
-              [classes.fail]: messageName !== 'Ім\'я успішно змінене'
-              })}>{messageName}</div>
-            <button className={classes.buttonChange}>Змінити</button>
-          </form>
-
-          <form onSubmit={onInputChangePhone} className={classes.formPhone}>
-            <label className={classes.phoneChange} htmlFor="phoneChange">Старий номер телефону</label>
-            <input id='phoneChange' onChange={e => setOldPhone(e.target.value)} value={oldPhone} className={classes.phone} type="number" placeholder="Введіть старий телефон"/>
-            <label className={classes.phoneChange} htmlFor="phoneChangeNew">Новий номер телефону</label>
-            <input id='phoneChangeNew' onChange={e => setNewPhone(e.target.value)} value={newPhone} className={classes.phone} type="number" placeholder="Новий телефон"/>
-            <div className={
-              cn({
-              [classes.successPhone]: messagePhone === 'Телефон змінено успішно!',
-              [classes.failPhone]: messagePhone !== 'Телефон змінено успішно!'
-              })}>{messagePhone}</div>
-            <button className={classes.buttonChangePhone}>Змінити</button>
-          </form>
+          <Formik initialValues={{
+            oldName: '',
+            newName: ''
+          }} validationSchema={Yup.object({
+            oldName: Yup.string().min(2, 'Мінімум 2 символи').required('Обов\'язкове поле'),
+            newName: Yup.string().min(2, 'Мінімум 2 символи').required('Обов\'язкове поле'),
+          })} onSubmit={(values, {resetForm}) => (onInputChangeName(values), resetForm())}>
+              {({errors, touched}) =>
+            <Form className={classes.formName}>
+              <label className={classes.nameChange} htmlFor="nameChange">Старе ім'я</label>
+              <Field id='nameChange' name='oldName' className={cn(classes.name, {[classes.errorInput]: errors.oldName && touched.oldName})} type="text" placeholder="Старе ім'я"/>
+              <ErrorMessage className={classes.error} name='oldName' component={'div'}/>
+              <label className={classes.nameChange} htmlFor="nameConfirm">Нове ім'я</label>
+              <Field id='nameConfirm' className={cn(classes.name, {[classes.errorInput]: errors.newName && touched.newName})} name='newName' type="text" placeholder="Нове ім'я"/>
+              <ErrorMessage className={classes.error} name='newName' component={'div'}/>
+              <div className={
+                cn({
+                [classes.success]: messageName === 'Ім\'я успішно змінене',
+                [classes.fail]: messageName !== 'Ім\'я успішно змінене'
+                })}>{messageName}</div>
+              <button type='submit' className={classes.buttonChange}>Змінити</button>
+            </Form>}
+          </Formik>
+          <Formik initialValues={{
+            oldPhone: '',
+            newPhone: ''
+          }} validationSchema={Yup.object({
+            oldPhone: Yup.string().matches(/^380\d{9}$/, 'Введіть корректний номер телефону').required('Обов\'язкове поле'),
+            newPhone: Yup.string().matches(/^380\d{9}$/, 'Введіть корректний номер телефону').required('Обов\'язкове поле'),
+          })} onSubmit={(values, {resetForm}) => {onInputChangePhone(values), resetForm()}}>
+              {({errors, touched}) =>
+             <Form className={classes.formPhone}>
+              <label className={classes.phoneChange} htmlFor="phoneChange">Старий номер телефону</label>
+              <Field id='phoneChange' name='oldPhone' className={cn(classes.phone, {[classes.errorInput]: errors.oldPhone && touched.oldPhone})} type="number" placeholder="Введіть старий телефон"/>
+              <ErrorMessage className={classes.error} name='oldPhone' component={'div'}/>
+              <label className={classes.phoneChange} htmlFor="phoneChangeNew">Новий номер телефону</label>
+              <Field id='phoneChangeNew' name='newPhone' className={cn(classes.phone, {[classes.errorInput]: errors.newPhone && touched.newPhone})} type="number" placeholder="Новий телефон"/>
+              <ErrorMessage className={classes.error} name='newPhone' component={'div'}/>
+              <div className={
+                cn({
+                [classes.successPhone]: messagePhone === 'Телефон змінено успішно!',
+                [classes.failPhone]: messagePhone !== 'Телефон змінено успішно!'
+                })}>{messagePhone}</div>
+              <button type='submit' className={classes.buttonChangePhone}>Змінити</button>
+            </Form>}
+          </Formik>
           <HeaderH clazz={classes.sign} h={'h2'}>Підписки</HeaderH>
           <button onClick={logoutHandler} className={classes.signOut}>Вихід</button>
         </div>
