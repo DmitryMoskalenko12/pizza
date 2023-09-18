@@ -90,16 +90,6 @@
   font-weight: variables.$font-weight600;
 }
 
-.hr {
-  position: absolute;
-  height: 1px;
-  top: 153px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  opacity: 0.2;
-}
-
 @media (min-width: 375px) {
   .stepsCircleBlock {
     &:after {
@@ -111,12 +101,6 @@
     &:after {
       content: '';
     }
-  }
-}
-
-@media (min-width: 768px) {
-  .hr {
-    top: 163px;
   }
 }
 

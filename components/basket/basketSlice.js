@@ -5,7 +5,8 @@ import { saucesData } from "@/dummy-data/dummy-data";
 const initialState = {
   basketArr: [],
   basketSliderData: basketSliderData,
-  basketSaucesData: saucesData
+  basketSaucesData: saucesData,
+  basketFinalPrice: 0
 }
 
 const basketSlice = createSlice({
@@ -21,10 +22,13 @@ const basketSlice = createSlice({
     updateCountProduct: (state, action) => {
       state.basketArr = action.payload;
     },
+    getFinalPrice: (state, action) => {
+      state.basketFinalPrice = action.payload;
+    },
   }
 })
 
 const {actions, reducer} = basketSlice;
 
-export const {getBasketProduct, deleteProduct, updateCountProduct} = actions;
+export const {getBasketProduct, deleteProduct, updateCountProduct, getFinalPrice} = actions;
 export default reducer;

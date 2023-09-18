@@ -80,6 +80,7 @@ const Basket = () => {
 
   return (
     <section className={classes.basket}>
+      <hr className={classes.hr1}/>
       <div className="container">
         <div className={classes.wrapper}>
            <HeaderH h={'h2'} clazz={classes.h2}>Кошик</HeaderH>

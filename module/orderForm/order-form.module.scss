@@ -45,3 +45,234 @@
 .fail {
   border: 1px solid variables.$fail;
 }
+
+.paySystem {
+  width: 100%;
+  padding: 24px 24px 20px 24px;
+  border-radius: 6px;
+  background: variables.$input-backg;
+  margin-top: 30px;
+}
+
+.svg {
+  margin-right: 7px;
+}
+
+.radio {
+  @include mixins.flex(flex, center, center);
+  gap: 29px;
+  position: relative;
+  width: 235px;
+  margin-top: 20px;
+}
+
+.cardLabel {
+  @include mixins.flex(flex, center, center);
+  color: variables.$price-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size16;
+  font-weight: variables.$font-weight600;
+}
+
+.cardLabel:before {
+  content: "";
+  display: block;
+  width: 19px;
+  height: 19px;
+  border: 1px solid variables.$main-color;
+  border-radius: 22px;
+  background-color: variables.$white;
+  position: absolute;
+  top: 3px;
+  left: 0;
+  z-index: 1;
+  transition: background .1s linear, border .1s linear;
+}
+
+.cardLabel:after {
+  content: "";
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 13px;
+  background: variables.$main-color;
+  background-size: 6px 7px;
+  position: absolute;
+  top: 10px;
+  left: 7px;
+  z-index: 2;
+  opacity: 0;
+}
+
+.check {
+  -webkit-appearance: none;
+  appearance: none;
+  position: absolute;
+}
+
+.check:checked + .cardLabel:before {
+  content:'';
+  background: transparent;
+}
+
+.check:checked + .cardLabel:after {
+  content:'';
+  opacity: 1;
+}
+
+.radio2 {
+  @include mixins.flex(flex, center, center);
+  position: relative;
+  width: 137px;
+  margin-top: 18px;
+}
+
+.cardLabel2 {
+  color: variables.$price-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size16;
+  font-weight: variables.$font-weight600;
+}
+
+.cardLabel2:before {
+  content: '';
+  display: block;
+  width: 19px;
+  height: 19px;
+  border: 1px solid variables.$main-color;
+  border-radius: 22px;
+  background-color: variables.$white;
+  position: absolute;
+  top: -1px;
+  left: 0;
+  z-index: 1;
+  transition: background .1s linear, border .1s linear;
+}
+
+.cardLabel2:after {
+  content: "";
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 13px;
+  background: variables.$main-color;
+  background-size: 6px 7px;
+  position: absolute;
+  top: 6px;
+  left: 7px;
+  z-index: 2;
+  opacity: 0;
+}
+
+.check2 {
+  -webkit-appearance: none;
+  appearance: none;
+  position: absolute;
+}
+
+.check2:checked + .cardLabel2:before {
+  content:'';
+  background: transparent;
+}
+
+.check2:checked + .cardLabel2:after {
+  content:'';
+  opacity: 1;
+}
+
+.numberCard {
+  width: 252px;
+  height: 46px;
+  padding: 8px 0px 10px 18px;
+  flex-shrink: 0;
+  border-radius: 7px;
+  border: 1.5px solid variables.$border-color;
+  background: variables.$white;
+  margin-top: 22px;
+  &::placeholder {
+    color: variables.$price-color;
+    font-family: variables.$font-family;
+    font-size: variables.$font-size17;
+    font-weight: variables.$font-weight600;
+  }
+}
+
+.cvcBlock {
+  @include mixins.flex(flex, center, center);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.date {
+  width: 133px;
+  height: 46px;
+  border-radius: 7px;
+  border: 1.5px solid variables.$border-color;
+  background: variables.$white;
+  padding: 9px 0 9px 18px;
+  &::placeholder {
+    color: variables.$price-color;
+    font-family: variables.$font-family;
+    font-size: variables.$font-size17;
+    font-weight: variables.$font-weight600;
+  }
+}
+
+.cvcWrap {
+  position: relative;
+  &:after {
+    content:'';
+    height: 15px;
+    width: 25px;
+    top: 15px;
+    right: 15px;
+    position: absolute;
+    background: url('/images/cvc.webp');
+  }
+}
+
+.cvc {
+  width: 109px;
+  height: 46px;
+  padding: 9px 0 9px 18px;
+  border-radius: 7px;
+  border: 1.5px solid variables.$border-color;
+  background: variables.$white;
+  &::placeholder {
+    color: variables.$price-color;
+    font-family: variables.$font-family;
+    font-size: variables.$font-size17;
+    font-weight: variables.$font-weight600;
+  }
+}
+
+.buy {
+  width: 224px;
+  height: 55px;
+  @include mixins.flex(flex, center, center);
+  gap: 14px;
+  color: variables.$price-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size15;
+  font-weight: variables.$font-weight800;
+  border-radius: 8px;
+  background: variables.$main-color;
+  border: none;
+  margin: 0 auto;
+  margin-top: 44px;
+  &:disabled {
+    background: variables.$delete;
+  }
+}
+
+.back {
+  @include mixins.flex(flex, center, center);
+  gap: 10px;
+  color: variables.$sign-in;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size15;
+  font-weight: variables.$font-weight700;
+  text-decoration: none;
+  margin: 0 auto;
+  margin-top: 14px;
+}

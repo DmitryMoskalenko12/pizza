@@ -1,7 +1,8 @@
 import classes from './promo-final-price.module.scss';
 import Button from '@/ui/button/button';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getFinalPrice } from '@/components/basket/basketSlice';
 
 const PromoFinalPrice = () => {
   const [promo, setPromo] = useState();
@@ -10,6 +11,11 @@ const PromoFinalPrice = () => {
   const sumProduct = allProduct.map((item) => item.price * item.count).reduce((sum, current) => sum + current, 0);
   const sumWithPromo = sumProduct - (sumProduct * 0.20);
   const finalPrice = usePromo.toLowerCase() === 'hello' ? sumWithPromo : sumProduct;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+   dispatch(getFinalPrice(finalPrice))
+ },[finalPrice])
 
   const sendPromo = (e) => {
     setUsePromo(promo)

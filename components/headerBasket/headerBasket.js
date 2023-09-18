@@ -31,7 +31,6 @@ const HeaderBasket = () => {
            </div>
         </div>
       </div>
-      <hr className={classes.hr}/>
     </div>
   )
 }
