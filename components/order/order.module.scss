@@ -16,4 +16,18 @@
   font-family: variables.$font-family;
   font-size: variables.$font-size26;
   font-weight: variables.$font-weight800;
+  text-align: center;
+}
+
+@media(min-width: 768px) {
+  .hr {
+    margin-top: 15px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .h2 {
+    font-size: variables.$font-size32;
+    text-align: left;
+  }
 }

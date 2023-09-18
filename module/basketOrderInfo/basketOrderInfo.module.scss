@@ -81,3 +81,32 @@
   text-align: center;
   margin-top: 15px;
 }
+
+@media (min-width: 768px) {
+  .orderList {
+    height: min-content;
+  }
+}
+
+@media (min-width: 1200px) {
+  .orderList {
+    width: 337px;
+    margin-top: 0;
+  }
+  
+  .h2 {
+    font-size: variables.$font-size16;
+  }
+
+  .contentWrapper {
+    margin-top: 23px;
+  }
+
+  .orderTitle {
+    font-size: variables.$font-size16;
+  }
+
+  .descr {
+    font-size: variables.$font-size11;
+  }
+}
