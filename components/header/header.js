@@ -122,10 +122,10 @@ const Header = (props) => {
              </ul>
            </nav>
             {
-              session && loading ? <Link className={classes.personal} href={'/personalPage'}>Особистий кабінет</Link> : <button onClick={() => {setSignIn(true); setActiveSideMenu(false)}} className={classes.signIn}>Увійти</button>
+              session && loading ? <Link onClick={() => setActiveSideMenu(false)} className={classes.personal} href={'/personalPage'}>Особистий кабінет</Link> : <button onClick={() => {setSignIn(true); setActiveSideMenu(false)}} className={classes.signIn}>Увійти</button>
             }
            <Telefon clazz={classes.phone2}>38 099 611 76 93</Telefon>
-           <Link href={'/basketPage'} className={classes.basket2}>
+           <Link onClick={() => setActiveSideMenu(false)} href={'/basketPage'} className={classes.basket2}>
               <span>Кошик</span>
               <span>|</span>
               <span>{basketData.length}</span>
