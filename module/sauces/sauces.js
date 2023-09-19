@@ -16,7 +16,7 @@ const Sauces = ({sauces, addAdditProductSauces}) => {
          <div className={classes.saucesWrapper}>
           {
             sauces.map(({path, titleName, price, id}) => {
-              return <article>
+              return <article key={id}>
                         <button disabled={basketData.find(item => item.id === id)} onClick={() => {addAdditProductSauces(id); setActive(id)}} key={id} className={cn(classes.saucesCard, {[classes.active]: active === id})}>
                         <Image className={classes.img} src={path} width={66} height={71} alt='sauces'/>
                         <HeaderH h={'h3'} clazz={classes.h3}>{titleName}</HeaderH>

@@ -12,15 +12,15 @@ const BasketOrderInfo = () => {
       {
         productOrder.length === 0 ? <div className={classes.empty}>Немає товарів</div> : productOrder.map(({titleName, price, descr, id}) => {
           return <div key={id} className={classes.contentWrapper}>
-            <div className={classes.wrapContent}>
-              <div className={classes.orderTitle}>{titleName}</div>
-              <div className={classes.descr}>{descr}</div>
-            </div>
-            <div className={classes.price}>{price} &#8372;</div>
-          </div>
+                    <div className={classes.wrapContent}>
+                      <div className={classes.orderTitle}>{titleName}</div>
+                      <div className={classes.descr}>{descr}</div>
+                    </div>
+                    <div className={classes.price}>{price} &#8372;</div>
+                 </div>
         })
       }
-      
+
       { productOrder.length === 0 ? null : <div className={classes.finalPriceWrap}>
         <div className={classes.sumDescr}>Сума замовлення</div>
         <div className={classes.finalPrice}>{finalPrice} &#8372;</div>

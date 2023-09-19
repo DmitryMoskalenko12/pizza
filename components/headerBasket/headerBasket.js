@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 
 const HeaderBasket = () => {
   const router = useRouter();
-  console.log(router.pathname)
+
   const arrSteps = [
     {number: 1, nameStep: 'Кошик', id: 1},
     {number: 2, nameStep: 'Оформлення замовлення', id: 2},
