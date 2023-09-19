@@ -1,0 +1,64 @@
+@use '../../styles/variables.scss';
+@use '../../styles/mixins.scss';
+
+.success {
+  position: relative;
+  padding: 25px 20px 20px 20px;
+  width: 300px;
+  height: 300px;
+  border-radius: 12px;
+  background: variables.$white;
+  box-shadow: variables.$box-shadow-content;
+  @include mixins.flex(flex, center, center);
+}
+
+.close {
+  @include mixins.flex(flex, center, center);
+  position: absolute;
+  width: 26px;
+  height: 36.659px;
+  color: variables.$main-color;
+  border: 0;
+  top: 19px;
+  right: 12px;
+  background: transparent;
+  font-size: variables.$font-size67;
+  font-family: variables.$font-family;
+  font-weight: variables.$font-weight400;
+  cursor: pointer;
+}
+
+.message {
+  text-align: center;
+  flex-direction: column;
+  color: variables.$success;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size26;
+  font-weight: variables.$font-weight800;
+}
+
+.error {
+  text-align: center;
+  color: variables.$fail;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size26;
+  font-weight: variables.$font-weight800;
+}
+
+@media(min-width: 1200px) {
+  .success {
+    width: 668px;
+  }
+
+  .close {
+    right: 30px;
+  }
+
+  .message {
+    font-size: variables.$font-size32;
+  }
+  
+  .error {
+    font-size: variables.$font-size32;
+  }
+}

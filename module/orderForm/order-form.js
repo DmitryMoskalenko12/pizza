@@ -5,10 +5,73 @@ import * as Yup from 'yup';
 import cn from 'classnames';
 import BasketOrderInfo from '../basketOrderInfo/basketOrderInfo';
 import Link from 'next/link';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import Modal from '../modal/modal';
+import { useEffect, useState } from 'react';
+import useHttp from '@/hooks/http.hook';
+import { clearBasketArr, getFinalPrice, getSuccessMessage } from '@/components/basket/basketSlice';
+import Success from '../success/success';
+import { useRouter } from 'next/router';
 
 const OrderForm = () => {
   const basketArr = useSelector(state => state.basket.basketArr);
+  const finalPrice = useSelector(state => state.basket.basketFinalPrice);
+  const dispatch = useDispatch();
+  const [message, setMessage] = useState('');
+  const [signIn, setSignIn] = useState(false);
+  const router = useRouter();
+  const {request} = useHttp();
+
+  const hideOverlay = (e) => {
+    if (e.target.getAttribute('data-modal')) {
+      setSignIn(false)
+    }
+  }
+
+  useEffect(() => {
+    const timer = setTimeout(() => setSignIn(false), 3000);
+    () => clearTimeout(timer);
+    if (message === 'success') {
+     const timer = setTimeout(() => {
+      dispatch(getSuccessMessage(''));
+      router.push('/')
+     },4000);
+     
+     () => clearTimeout(timer);
+    }
+  },[message])
+
+  const sendDataToDB = (values) => {
+  const {name, phone, address, timeDelivery, card, numberCard, date, cvc} = values;
+
+  const product = {
+    name,
+    phone,
+    address,
+    timeDelivery,
+    card,
+    numberCard,
+    date,
+    cvc,
+    order: basketArr,
+  }
+  
+  request('/api/sendDataToDB/sendDataToDB', 'POST', JSON.stringify({product: product}))
+  .then(res => {
+    setSignIn(true);
+    setMessage(res.message);
+    dispatch(clearBasketArr([]));
+    dispatch(getFinalPrice(0));
+    dispatch(getSuccessMessage(res.message));
+  })
+  .catch(error => {
+    dispatch(clearBasketArr([]));
+    dispatch(getFinalPrice(0));
+    setSignIn(true);
+    setMessage(error);
+    dispatch(getSuccessMessage(error));
+    })
+  }
 
   return (
     <Formik initialValues={{
@@ -30,7 +93,7 @@ const OrderForm = () => {
       numberCard: Yup.string().required('Обов\'язкове поле'),
       date: Yup.string().required('Дата картки обов\'язкова'),
       cvc: Yup.string().required('CVC обов\'язкове')
-    })}>
+    })} onSubmit={(values, {resetForm}) => {sendDataToDB(values); resetForm()}}>
       {({errors, touched}) =>
       <Form className={classes.orderForm}>
         <div className={classes.mainWrapper}>
@@ -98,7 +161,7 @@ const OrderForm = () => {
          <BasketOrderInfo/>
          </div>
         <div className={classes.wrapOrderLink}>
-          <button disabled={basketArr.length === 0} className={classes.buy}>Оформити замовлення 
+          <button disabled={basketArr.length === 0} className={classes.buy}>Оформити замовлення на {finalPrice} &#8372;
             <svg width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M6.5625 5.87305C6.82617 5.60938 6.82617 5.16992 6.5625 4.87695L2.57812 0.892578C2.28516 0.628906 1.8457 0.628906 1.58203 0.892578L0.908203 1.56641C0.644531 1.85938 0.644531 2.29883 0.908203 2.5625L3.75 5.4043L0.908203 8.2168C0.644531 8.48047 0.644531 8.91992 0.908203 9.21289L1.58203 9.85742C1.8457 10.1504 2.28516 10.1504 2.57812 9.85742L6.5625 5.87305Z" fill="#231F20"/>
             </svg>
@@ -111,6 +174,7 @@ const OrderForm = () => {
             Повернутись до кошика
           </Link>
         </div>
+        {message ? <Modal hideOverlay={hideOverlay} modal={signIn}><Success message={message} setSignIn={setSignIn}/></Modal>: null}
      </Form>}
     </Formik>
   )

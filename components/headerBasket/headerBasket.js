@@ -2,10 +2,11 @@ import classes from './headerBasket.module.scss';
 import Logo from '@/ui/logo/logo';
 import cn from 'classnames';
 import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
 
 const HeaderBasket = () => {
   const router = useRouter();
-
+  const successMessage = useSelector(state => state.basket.message);
   const arrSteps = [
     {number: 1, nameStep: 'Кошик', id: 1},
     {number: 2, nameStep: 'Оформлення замовлення', id: 2},
@@ -22,9 +23,9 @@ const HeaderBasket = () => {
               arrSteps.map(({number, nameStep, id}) => {
                 return <div key={id} className={classes.stepsBlock}>
                           <div className={cn(classes.stepsCircleBlock, {[classes.circleBlock3]: id === 3})}>
-                            <div className={cn(classes.circle, {[classes.circleActive]: (router.pathname === '/basketPage' && id === 1) || (router.pathname === '/orderPage' && id === 2)})}>{number}</div>
+                            <div className={cn(classes.circle, {[classes.circleActive]: (router.pathname === '/basketPage' && id === 1) || (router.pathname === '/orderPage' && id === 2 &&successMessage !== 'success') || (successMessage === 'success' && id === 3)})}>{number}</div>
                           </div>
-                          <div className={cn(classes.stepsTitle, {[classes.stepsTitleActive]: (router.pathname === '/basketPage' && id === 1) || (router.pathname === '/orderPage' && id === 2)})}>{nameStep}</div>
+                          <div className={cn(classes.stepsTitle, {[classes.stepsTitleActive]: (router.pathname === '/basketPage' && id === 1) || (router.pathname === '/orderPage' && id === 2 && successMessage !== 'success') || (successMessage === 'success' && id === 3)})}>{nameStep}</div>
                        </div>
               })
             }

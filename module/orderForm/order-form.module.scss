@@ -353,7 +353,7 @@
     @include mixins.flex(flex, center, center);
     flex-direction: row-reverse;
     margin-right: auto;
-    gap: 269px;
+    gap: 190px;
     margin-top: 51px;
   }
 
@@ -362,6 +362,8 @@
   }
 
   .buy {
+    width: 301px;
+    height: 60px;
     margin-top: 0;
   }
 }

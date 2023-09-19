@@ -6,7 +6,8 @@ const initialState = {
   basketArr: [],
   basketSliderData: basketSliderData,
   basketSaucesData: saucesData,
-  basketFinalPrice: 0
+  basketFinalPrice: 0,
+  message: ''
 }
 
 const basketSlice = createSlice({
@@ -25,10 +26,16 @@ const basketSlice = createSlice({
     getFinalPrice: (state, action) => {
       state.basketFinalPrice = action.payload;
     },
+    clearBasketArr: (state, action) => {
+      state.basketArr = action.payload
+    },
+    getSuccessMessage: (state, action) => {
+      state.message = action.payload
+    }
   }
 })
 
 const {actions, reducer} = basketSlice;
 
-export const {getBasketProduct, deleteProduct, updateCountProduct, getFinalPrice} = actions;
+export const {getBasketProduct, deleteProduct, updateCountProduct, getFinalPrice, clearBasketArr, getSuccessMessage} = actions;
 export default reducer;

@@ -21,11 +21,12 @@ const Header = (props) => {
   const [signIn, setSignIn] = useState(false);
   const pathName = useRouter().pathname;
   const basketData = useSelector(state => state.basket.basketArr);
+  const successMessage = useSelector(state => state.basket.message);
   const {data: session, status} = useSession();
   const loading = status === 'authenticated';
 
   useEffect(() => {
-   if ((window.screen.availWidth <= 992) && ((pathName === '/basketPage') || (pathName === '/orderPage'))) {
+   if ((window.screen.availWidth <= 992) && ((pathName === '/basketPage') || (pathName === '/orderPage') || (successMessage === 'success'))) {
     localStorage.setItem('basketHeader', true)
     setShowBasketHeader(localStorage.getItem('basketHeader'))
    } else {
@@ -33,7 +34,7 @@ const Header = (props) => {
     setShowBasketHeader(false)
    }
 
-   if ((window.screen.availWidth > 992) && ((pathName === '/basketPage') || (pathName === '/orderPage'))) {
+   if ((window.screen.availWidth > 992) && ((pathName === '/basketPage') || (pathName === '/orderPage') || (successMessage === 'success'))) {
     localStorage.setItem('basketHeader', true)
     setShowBasketHeader(localStorage.getItem('basketHeader'))
     setShowBasketHeader2(true)
