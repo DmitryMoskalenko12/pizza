@@ -86,7 +86,7 @@
 
 @media(min-width: 1200px) {
   .wrapper {
-    padding: 30px 160px 103px 160px;
+    padding: 30px 160px 69px 160px;
   }
 
   .check {
@@ -99,5 +99,9 @@
     &:active {
       background: variables.$active;
     }
+  }
+
+  .hr1 {
+    margin-top: 15px;
   }
 }
