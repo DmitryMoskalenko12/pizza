@@ -22,7 +22,7 @@ const transitionStyles = {
     <Transition in={props.modal} timeout={duration}>
       {
         state => (
-        <div onClick={props.hideOverlay} data-modal className={classes.modal} style={{
+        <div onClick={() => props.hideOverlay} data-modal className={classes.modal} style={{
           ...defaultStyle,
           ...transitionStyles[state]
         }}>

@@ -88,7 +88,7 @@ const OrderForm = () => {
     }}
     validationSchema={validationOrderForm} onSubmit={(values, {resetForm}) => {sendDataToDB(values); resetForm()}}>
       {({errors, touched}) =>
-      <Form className={classes.orderForm}>
+      <Form className={classes.orderForm} noValidate>
         <div className={classes.mainWrapper}>
         <div className={classes.formWrapper}>
           <div className={classes.inputLabel}>

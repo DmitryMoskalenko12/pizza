@@ -13,12 +13,14 @@ import { useSelector } from "react-redux";
 import Modal from "@/module/modal/modal";
 import Registration from "@/module/registration/registration";
 import { useSession } from "next-auth/react";
+import CallOrder from "@/module/callOrder/call-order";
 
 const Header = (props) => {
   const [activeSideMenu, setActiveSideMenu] = useState(false);
   const [showBasketHeader, setShowBasketHeader] = useState(false);
   const [showBasketHeader2, setShowBasketHeader2] = useState(false);
   const [signIn, setSignIn] = useState(false);
+  const [callOrder, setCallOrder] = useState(false);
   const pathName = useRouter().pathname;
   const basketData = useSelector(state => state.basket.basketArr);
   const successMessage = useSelector(state => state.basket.message);
@@ -51,8 +53,14 @@ const Header = (props) => {
 
   const hideOverlay = (e) => {
     if (e.target.getAttribute('data-modal')) {
-      setSignIn(false)
+      setSignIn(false);
     }
+  }
+
+  const hideCallOverlay = (e) => {
+    if (e.target.getAttribute('data-modal')) {
+      setCallOrder(false);
+   }
   }
 
   return (
@@ -87,7 +95,7 @@ const Header = (props) => {
              </div>
           </div>
 
-          <Button clazz={classes.button}>Замовити дзвінок</Button>
+          <Button setSignIn={setCallOrder} clazz={classes.button}>Замовити дзвінок</Button>
           <Telefon clazz={classes.phone}>38 099 611 76 93</Telefon>
           <Link href={'/basketPage'} className={classes.basket}>
             <span>Кошик</span>
@@ -138,6 +146,9 @@ const Header = (props) => {
       } 
       {
         <Modal hideOverlay={hideOverlay} modal={signIn}><Registration setSignIn={setSignIn}/></Modal>
+      }
+      {
+        <Modal hideOverlay={hideCallOverlay} modal={callOrder}><CallOrder setSignIn={setCallOrder}/></Modal>
       }
     </header>
   )

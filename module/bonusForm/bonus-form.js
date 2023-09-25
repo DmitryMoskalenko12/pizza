@@ -68,7 +68,7 @@ const BonusForm = () => {
             newName: Yup.string().min(2, 'Мінімум 2 символи').required('Обов\'язкове поле'),
           })} onSubmit={(values, {resetForm}) => (onInputChangeName(values), resetForm())}>
               {({errors, touched}) =>
-            <Form className={classes.formName}>
+            <Form className={classes.formName} noValidate>
               <label className={classes.nameChange} htmlFor="nameChange">Старе ім'я</label>
               <Field id='nameChange' name='oldName' className={cn(classes.name, {[classes.errorInput]: errors.oldName && touched.oldName})} type="text" placeholder="Старе ім'я"/>
               <ErrorMessage className={classes.error} name='oldName' component={'div'}/>

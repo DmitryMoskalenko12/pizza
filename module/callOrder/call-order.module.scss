@@ -78,3 +78,20 @@
 .errorInput {
   border: 1px solid variables.$fail;
 }
+
+.success {
+  font-family: variables.$font-family;
+  font-size: variables.$font-size13;
+  font-weight: variables.$font-weight400;
+  color: variables.$success;
+  margin-top: 5px;
+}
+
+.fail {
+  font-family: variables.$font-family;
+  font-size: variables.$font-size13;
+  font-weight: variables.$font-weight400;
+  color: variables.$fail;
+  margin-top: 5px;
+}
+
