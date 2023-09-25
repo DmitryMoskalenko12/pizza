@@ -2,6 +2,7 @@ import classes from './stock.module.scss';
 import Image from 'next/image';
 import { useSelector } from 'react-redux';
 import Button from '@/ui/button/button';
+import Link from 'next/link';
 
 const Stock = () => {
   const stockData = useSelector(state => state.stock.data);
@@ -19,7 +20,7 @@ const Stock = () => {
                 })
               }
            </div>
-           <Button clazz={classes.button}>Усі акції</Button>
+           <Link href={'/stockPage'} className={classes.button}>Усі акції</Link>
             <picture>
               <source
                 width={219}

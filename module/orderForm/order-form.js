@@ -1,6 +1,6 @@
 import HeaderH from '@/ui/headerH/headerH';
 import classes from './order-form.module.scss';
-import { Formik, Field, Form, ErrorMessage, useField } from 'formik';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import cn from 'classnames';
 import BasketOrderInfo from '../basketOrderInfo/basketOrderInfo';
@@ -13,6 +13,7 @@ import { clearBasketArr, getFinalPrice, getSuccessMessage } from '@/components/b
 import Success from '../success/success';
 import { useRouter } from 'next/router';
 import ReactInputMask from 'react-input-mask';
+import { validationOrderForm } from '@/helpers/validationOrderForm';
 
 const OrderForm = () => {
   const basketArr = useSelector(state => state.basket.basketArr);
@@ -20,7 +21,6 @@ const OrderForm = () => {
   const dispatch = useDispatch();
   const [message, setMessage] = useState('');
   const [signIn, setSignIn] = useState(false);
-  const [choice, setChoice] = useState('');
   const router = useRouter();
   const {request} = useHttp();
 
@@ -86,28 +86,7 @@ const OrderForm = () => {
       date: '',
       cvc: ''
     }}
-    validationSchema={Yup.object().shape({
-      name: Yup.string().min(2, 'Мінімум 2 символи').required('Обов\'язкове поле'),
-      phone: Yup.string().matches(/^380\d{9}$/, 'Введіть корректний номер телефону').required('Обов\'язкове поле'),
-      address: Yup.string().required('Обов\'язкове поле'),
-      timeDelivery: Yup.string().required('Обов\'язкове поле'),
-      card: Yup.string().oneOf(['1', '2']).required('Виберіть хоча б один варіант оплати'),
-      numberCard: Yup.string().when('card', {
-        is: '1',
-        then: () => Yup.string().required('Обов\'язкове поле'),
-        otherwise: () => Yup.string()
-      }),
-      date: Yup.string().when('card', {
-        is: '1',
-        then: () => Yup.string().matches(/^(0[1-9]|1[0-9]|2[0-9])\/(0[1-9]|1[0-9]|2[0-9]|30)$/, 'Введіть правильну дату').required('Дата картки обов\'язкова'),
-        otherwise: () => Yup.string()
-      }),
-      cvc: Yup.string().when('card', {
-        is: '1',
-        then: () => Yup.string().required('CVC обов`язкове'),
-        otherwise: () => Yup.string()
-      }),
-    })} onSubmit={(values, {resetForm}) => {sendDataToDB(values); resetForm()}}>
+    validationSchema={validationOrderForm} onSubmit={(values, {resetForm}) => {sendDataToDB(values); resetForm()}}>
       {({errors, touched}) =>
       <Form className={classes.orderForm}>
         <div className={classes.mainWrapper}>
@@ -120,7 +99,11 @@ const OrderForm = () => {
 
           <div className={classes.inputLabel}>
           <label className={classes.label} htmlFor='phone'>Номер телефону</label>
-          <Field id='phone' type='number' name='phone' className={cn(classes.input,{[classes.fail]: errors.phone && touched.phone})} placeholder="Телефон"/>
+          <Field name='phone'>
+            {({ field }) => (
+              <ReactInputMask id='phone' type='text' mask='380999999999' {...field} maskChar={null} className={cn(classes.input,{[classes.fail]: errors.phone && touched.phone})} placeholder="Телефон"/>
+            )}
+          </Field>
           </div>
           <ErrorMessage name='phone' className={classes.error} component={'div'}/>
 
@@ -132,7 +115,11 @@ const OrderForm = () => {
 
           <div className={classes.inputLabel}>
           <label className={classes.label} htmlFor='timeDelivery'>Час доставки</label>
-          <Field id='timeDelivery' type='text' name='timeDelivery' className={cn(classes.input,{[classes.fail]: errors.timeDelivery && touched.timeDelivery})} placeholder="Час доставки"/>
+            <Field name='timeDelivery'>
+            {({ field }) => (
+              <ReactInputMask id='timeDelivery' type='text' mask='99:99' {...field} maskChar={null} className={cn(classes.input,{[classes.fail]: errors.timeDelivery && touched.timeDelivery})}  placeholder="16:00"/>
+            )}
+            </Field>
           </div>
           <ErrorMessage name='timeDelivery' className={classes.error} component={'div'}/>
 
@@ -155,20 +142,20 @@ const OrderForm = () => {
             <ErrorMessage name="card" className={classes.error2} component={'div'}/>
             <Field name='numberCard'>
               {({ field }) => (
-                <ReactInputMask name={field.name} mask='9999-9999-9999-9999' className={classes.numberCard} type='text' placeholder='XXXX-XXXX-XXXX-XXXX' onChange={field.onChange} onBlur={field.onBlur}/>
+                <ReactInputMask name={field.name} mask='9999-9999-9999-9999' maskChar={null} className={cn(classes.numberCard, {[classes.fail]: errors.numberCard && touched.numberCard})} type='text' placeholder='XXXX-XXXX-XXXX-XXXX' onChange={field.onChange} onBlur={field.onBlur}/>
               )}
             </Field>
             <ErrorMessage name="numberCard" className={classes.error2} component={'div'}/>
             <div className={classes.cvcBlock}>
               <Field name='date'>
               {({ field }) => (
-                <ReactInputMask mask='99/99' name={field.name} type="text" maskChar={null} className={classes.date} placeholder="20/23" onChange={field.onChange} onBlur={field.onBlur}/>
+                <ReactInputMask mask='99/99' name={field.name} type="text" maskChar={null} className={cn(classes.date, {[classes.fail]: errors.date && touched.date})} placeholder="20/23" onChange={field.onChange} onBlur={field.onBlur}/>
               )}
               </Field>
               <div className={classes.cvcWrap}>
               <Field name='cvc'>
               {({ field }) => (
-                <ReactInputMask mask='999' type="text" maskChar={null} name={field.name} className={classes.cvc} onChange={field.onChange} onBlur={field.onBlur} placeholder="CVC"/>
+                <ReactInputMask mask='999' type="text" maskChar={null} name={field.name} className={cn(classes.cvc, {[classes.fail]: errors.cvc && touched.cvc})} onChange={field.onChange} onBlur={field.onBlur} placeholder="CVC"/>
                )}
                </Field>
               </div>
@@ -187,7 +174,7 @@ const OrderForm = () => {
          <BasketOrderInfo/>
          </div>
         <div className={classes.wrapOrderLink}>
-          <button disabled={basketArr.length === 0} className={classes.buy}>Оформити замовлення на {finalPrice} &#8372;
+          <button disabled={basketArr.length === 0} className={classes.buy}>Купити {basketArr.length <= 1 ? 'товар': 'товарів'} на {finalPrice} &#8372;
             <svg width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M6.5625 5.87305C6.82617 5.60938 6.82617 5.16992 6.5625 4.87695L2.57812 0.892578C2.28516 0.628906 1.8457 0.628906 1.58203 0.892578L0.908203 1.56641C0.644531 1.85938 0.644531 2.29883 0.908203 2.5625L3.75 5.4043L0.908203 8.2168C0.644531 8.48047 0.644531 8.91992 0.908203 9.21289L1.58203 9.85742C1.8457 10.1504 2.28516 10.1504 2.57812 9.85742L6.5625 5.87305Z" fill="#231F20"/>
             </svg>

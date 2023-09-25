@@ -6,7 +6,7 @@ const Button = (props) => {
   const basketData= useSelector(state => state.basket.basketArr);
 
   return (
-    <button disabled={basketData.find(item => item.id === props.id)} onClick={() => props.getProduct?.(props.id)} className={cn(classes.button, props.clazz)} >
+    <button disabled={basketData.find(item => item.id === props.id)} onClick={() => {props.getProduct?.(props.id); props.setSignIn?.(true)}} className={cn(classes.button, props.clazz)} >
       {
         props.children
       }

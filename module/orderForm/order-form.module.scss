@@ -49,10 +49,6 @@
   color: variables.$fail;
 }
 
-.fail {
-  border: 1px solid variables.$fail;
-}
-
 .paySystem {
   width: 100%;
   padding: 24px 24px 20px 24px;
@@ -285,6 +281,10 @@
   text-decoration: none;
   margin: 0 auto;
   margin-top: 14px;
+}
+
+.fail {
+  border: 1px solid variables.$fail;
 }
 
 @media(min-width: 768px) {

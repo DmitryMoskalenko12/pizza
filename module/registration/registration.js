@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import { signIn } from 'next-auth/react';
 import classes from './registration.module.scss';
 import cn from 'classnames';
+import ReactInputMask from 'react-input-mask';
 
 const Registration = ({setSignIn}) => {
   const [signInOrSignUp, setSignInOrSignUp] = useState(false);
@@ -73,13 +74,17 @@ const Registration = ({setSignIn}) => {
         phone: Yup.string().matches(/^380\d{9}$/, 'Введіть корректний номер телефону').required('Обов\'язкове поле')
       })} onSubmit={(values, {resetForm}) => {onRequest(values); resetForm()}}>
         {({errors, touched}) =>
-        <Form className={classes.form}>
+        <Form className={classes.form} noValidate>
         <HeaderH h={'h2'} clazz={classes.h2}>Реєстрація</HeaderH>
-        <label className={classes.nameLabel} htmlFor="name">Ім'я</label>
+        <label className={classes.nameLabel} htmlFor="name">Унікальне ім'я</label>
         <Field className={cn(classes.name, {[classes.errorInput]: errors.name && touched.name})} id='name' type="text" name='name' required placeholder="Ім'я"/>
         <ErrorMessage className={classes.error} name='name' component={'div'}/>
         <label className={classes.phoneLabel} htmlFor="phone">Телефон</label>
-        <Field className={cn(classes.phone, {[classes.errorInput]: errors.phone && touched.phone})} id='phone' type="number" name='phone' required placeholder="380999999999"/>
+        <Field name='phone'>
+        {({ field }) => (
+         <ReactInputMask className={cn(classes.phone, {[classes.errorInput]: errors.phone && touched.phone})} id='phone' type="text" mask='380999999999' {...field} maskChar={null} required placeholder="380XXXXXXXXX"/>
+        )}
+        </Field>
         <ErrorMessage className={classes.error} name='phone' component={'div'}/>
         <div className={cn({
           [classes.success]: success === 'Обліковий запис успішно створено',
@@ -91,15 +96,19 @@ const Registration = ({setSignIn}) => {
        <Formik initialValues={{name: '', phone: ''}} validationSchema={Yup.object({
         name: Yup.string().min(2, 'Мінімум 2 символи').required('Обов\'язкове поле'),
         phone: Yup.string().matches(/^380\d{9}$/, 'Введіть корректний номер телефону').required('Обов\'язкове поле')
-      })} onSubmit={(values, {resetForm}) => {onRequest(values); resetForm()}}>
+        })} onSubmit={(values, {resetForm}) => {onRequest(values); resetForm()}}>
         {({errors, touched}) =>
-        <Form className={classes.form}>
+        <Form className={classes.form} noValidate>
           <HeaderH h={'h2'} clazz={classes.h2}>Увійти на сайт</HeaderH>
-          <label className={classes.nameLabel} htmlFor="name">Ім'я</label>
+          <label className={classes.nameLabel} htmlFor="name">Унікальне ім'я</label>
           <Field className={cn(classes.name, {[classes.errorInput]: errors.name && touched.name})} id='name' name='name' type="text" required placeholder="Ім'я"/>
           <ErrorMessage className={classes.error} name='name' component={'div'}/>
           <label className={classes.phoneLabel} htmlFor="phone">Телефон</label>
-          <Field className={cn(classes.phone, {[classes.errorInput]: errors.phone && touched.phone})}  id='phone' name='phone' type="number" required placeholder="Телефон"/>
+          <Field name='phone'>
+            {({ field }) => (
+            <ReactInputMask className={cn(classes.phone, {[classes.errorInput]: errors.phone && touched.phone})} id='phone' type="text" mask='380999999999' {...field} maskChar={null} required placeholder="380XXXXXXXXX"/>
+            )}
+          </Field>
           <ErrorMessage className={classes.error} name='phone' component={'div'}/>
           <div className={cn({
             [classes.success]: success === 'Вхід дозволено',

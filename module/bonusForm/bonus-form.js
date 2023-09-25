@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { signOut } from 'next-auth/react';
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
+import ReactInputMask from 'react-input-mask';
 
 const BonusForm = () => {
   const [messageName, setMessageName] = useState();
@@ -92,10 +93,18 @@ const BonusForm = () => {
               {({errors, touched}) =>
              <Form className={classes.formPhone}>
               <label className={classes.phoneChange} htmlFor="phoneChange">Старий номер телефону</label>
-              <Field id='phoneChange' name='oldPhone' className={cn(classes.phone, {[classes.errorInput]: errors.oldPhone && touched.oldPhone})} type="number" placeholder="Введіть старий телефон"/>
+              <Field name='oldPhone'>
+                {({ field }) => (
+                <ReactInputMask id='phoneChange' mask='380999999999' {...field} maskChar={null} className={cn(classes.phone, {[classes.errorInput]: errors.oldPhone && touched.oldPhone})} type="text" placeholder="Введіть старий телефон"/>
+                )}
+              </Field>
               <ErrorMessage className={classes.error} name='oldPhone' component={'div'}/>
               <label className={classes.phoneChange} htmlFor="phoneChangeNew">Новий номер телефону</label>
-              <Field id='phoneChangeNew' name='newPhone' className={cn(classes.phone, {[classes.errorInput]: errors.newPhone && touched.newPhone})} type="number" placeholder="Новий телефон"/>
+              <Field name='newPhone'>
+               {({ field }) => (
+                 <ReactInputMask id='phoneChangeNew'  mask='380999999999' {...field} maskChar={null} className={cn(classes.phone, {[classes.errorInput]: errors.newPhone && touched.newPhone})} type="text" placeholder="Новий телефон"/>
+               )}
+              </Field>
               <ErrorMessage className={classes.error} name='newPhone' component={'div'}/>
               <div className={
                 cn({

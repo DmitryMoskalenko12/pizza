@@ -42,16 +42,19 @@
 }
 
 .button {
+  @include mixins.flex(flex, center, center);
   width: 97px;
   height: 33px;
   border-radius: 23px;
   color: variables.$our;
+  background: variables.$main-color;
   font-family: variables.$font-family;
   font-size: variables.$font-size10;
   font-weight: variables.$font-weight700;
   margin: 0 auto;
   padding: 0;
   margin-top: 22px;
+  text-decoration: none;
 }
 
 .girlImg {

@@ -4,8 +4,20 @@ import Telefon from '@/ui/telefon/telefon';
 import Button from '@/ui/button/button';
 import HeaderH from '@/ui/headerH/headerH';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
+import Modal from '@/module/modal/modal';
+import CallOrder from '@/module/callOrder/call-order';
 
 const Footer = () => {
+  const [signIn, setSignIn] = useState(false);
+
+  const hideOverlay = (e) => {
+    if (e.target.getAttribute('data-modal')) {
+      setSignIn(false)
+    }
+  }
+
   return (
     <footer className={classes.footer}>
       <div className="container">
@@ -16,7 +28,7 @@ const Footer = () => {
 
               <div className={classes.phoneOrderBlock}>
                 <Telefon clazz={classes.phone}>099 611 7693</Telefon>
-                <Button clazz={classes.order}>Замовити дзвінок</Button>
+                <Button setSignIn={setSignIn} clazz={classes.order}>Замовити дзвінок</Button>
               </div>
             </div>
             <ul className={classes.calLowList}>
@@ -27,18 +39,18 @@ const Footer = () => {
               <HeaderH h={'h3'} clazz={classes.h3}>Ми у соцмережах</HeaderH>
               <div className={classes.socialWrapper}>
                   <ul className={classes.socialSubBlock}>
-                    <li><a className={classes.socialLink1} href="#">YouTube</a></li>
-                    <li><a className={classes.socialLink2} href="#">Instagram</a></li>
+                    <li><Link className={classes.socialLink1} target='__blank' href="https://www.youtube.com/">YouTube</Link></li>
+                    <li><Link className={classes.socialLink2} target='__blank' href="https://www.instagram.com/">Instagram</Link></li>
                   </ul>
 
                   <ul className={classes.socialSubBlock}>
-                    <li><a className={classes.socialLink} href="#">Facebook</a></li>
-                    <li><a className={classes.socialLink} href="#">Linkedin</a></li>
+                    <li><Link className={classes.socialLink} target='__blank' href="https://www.facebook.com/">Facebook</Link></li>
+                    <li><Link className={classes.socialLink} target='__blank' href="https://www.linkedin.com/">Linkedin</Link></li>
                   </ul>
 
                   <ul className={classes.address}>
-                    <li><a className={classes.socialLink} href="#">Миколаїв</a></li>
-                    <li><a className={classes.socialLink} href="#">вул.Тиха 85В</a></li>
+                    <li><Link className={classes.socialLink} target='__blank' href="https://www.google.com/maps">Миколаїв</Link></li>
+                    <li><Link className={classes.socialLink} target='__blank' href="https://www.google.com/maps">вул.Тиха 85В</Link></li>
                   </ul>
               </div>
               <div className={classes.allRule}>
@@ -57,19 +69,19 @@ const Footer = () => {
               <HeaderH h={'h3'} clazz={classes.h3}>Залишились питання? А ми завжди на зв'язку:</HeaderH>
 
               <ul className={classes.socialConnect}>
-                  <li className={classes.li}><a href="#"><Image src={'/images/viber.png'} width={30} height={30} alt='viber'/></a></li>
-                  <li className={classes.li}><a href="#"><Image src={'/images/skype.png'} width={30} height={30} alt='skype'/></a></li>
-                  <li className={classes.li}><a href="#"><Image src={'/images/mess.png'} width={30} height={30} alt='messanger'/></a></li>
-                  <li className={classes.li}><a href="#"><Image src={'/images/teleg.png'} width={30} height={30} alt='telegram'/></a></li>
-                  <li className={classes.li}><a href="#"><Image src={'/images/face.png'} width={30} height={30} alt='facebook'/></a></li>
-                  <li className={classes.li}><a href="#"><Image src={'/images/insta.png'} width={30} height={30} alt='instagram'/></a></li>
+                  <li className={classes.li}><Link target='__blank' href="https://www.viber.com/"><Image src={'/images/viber.png'} width={30} height={30} alt='viber'/></Link></li>
+                  <li className={classes.li}><Link href="https://www.skype.com/" target='__blank'><Image src={'/images/skype.png'} width={30} height={30} alt='skype'/></Link></li>
+                  <li className={classes.li}><Link href="https://www.messenger.com/" target='__blank'><Image src={'/images/mess.png'} width={30} height={30} alt='messanger'/></Link></li>
+                  <li className={classes.li}><Link href="https://web.telegram.org/" target='__blank'><Image src={'/images/teleg.png'} width={30} height={30} alt='telegram'/></Link></li>
+                  <li className={classes.li}><Link href="https://uk-ua.facebook.com/" target='__blank'><Image src={'/images/face.png'} width={30} height={30} alt='facebook'/></Link></li>
+                  <li className={classes.li}><Link href="https://www.instagram.com/" target='__blank'><Image src={'/images/insta.png'} width={30} height={30} alt='instagram'/></Link></li>
                   <li className={classes.liButton}><Button clazz={classes.write}>Написати нам</Button></li>
               </ul>
             </div>
 
             <div className={classes.orderPhone}>
                 <Telefon clazz={classes.phone}>099 611 7693</Telefon>
-                <Button clazz={classes.order}>Замовити дзвінок</Button>
+                <Button setSignIn={setSignIn} clazz={classes.order}>Замовити дзвінок</Button>
             </div>
 
             <div className={classes.allRule2}>
@@ -83,6 +95,7 @@ const Footer = () => {
         </div>
        </div>
       </div>
+      {<Modal hideOverlay={hideOverlay} modal={signIn}><CallOrder setSignIn={setSignIn}/></Modal>}
     </footer>
   )
 }

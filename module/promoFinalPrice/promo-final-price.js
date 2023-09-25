@@ -10,7 +10,7 @@ const PromoFinalPrice = () => {
   const allProduct = useSelector(state => state.basket.basketArr);
   const sumProduct = allProduct.map((item) => item.price * item.count).reduce((sum, current) => sum + current, 0);
   const sumWithPromo = sumProduct - (sumProduct * 0.20);
-  const finalPrice = usePromo.toLowerCase() === 'hello' ? sumWithPromo : sumProduct;
+  const finalPrice = usePromo?.toLowerCase() === 'hello' ? sumWithPromo : sumProduct;
   const dispatch = useDispatch();
 
   useEffect(() => {
