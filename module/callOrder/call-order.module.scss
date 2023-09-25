@@ -140,3 +140,16 @@
     margin-top: 5px;
   }
 }
+
+@media(min-width: 992px) {
+  .button {
+    transition: variables.$transition;
+    &:hover {
+      transition: variables.$transition;
+      background: variables.$hover;
+    }
+    &:active {
+      background: variables.$active;
+    }
+  }
+}
