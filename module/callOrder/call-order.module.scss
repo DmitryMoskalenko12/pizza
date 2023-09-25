@@ -66,9 +66,17 @@
 }
 
 .button {
+  @include mixins.flex(flex, center, center);
   width: 260px;
   height: 55px;
   border-radius: 8px;
+  background: variables.$main-color;
+  color: variables.$white;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size14;
+  font-weight: variables.$font-weight700;
+  border: none;
+  cursor: pointer;
 }
 
 .error {

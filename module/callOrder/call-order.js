@@ -11,8 +11,17 @@ const CallOrder = ({setSignIn}) => {
   const [messagePhone, setMessagePhone] = useState('');
 
   useEffect(() => {
-    const phone = setTimeout(() => {setMessagePhone(''); setSignIn(false)}, 3000);
-    () => clearTimeout(phone);
+    if ((messagePhone === 'Повідомлення успішно відправлено')) {
+      const phone = setTimeout(() => {setMessagePhone(''); setSignIn(false)}, 3000);
+      () => clearTimeout(phone);
+    } else if (messagePhone?.length > 1 && success !== 'Повідомлення успішно відправлено') {
+      const closeModal = setTimeout(() => {
+        setMessagePhone('');
+        setSignIn(false);
+      }, 3000);
+  
+      return () => clearTimeout(closeModal);
+     }
   },[messagePhone])
 
   const onSendPhoneToDB = async ({phone}) => {
@@ -57,7 +66,7 @@ const CallOrder = ({setSignIn}) => {
           Продовжуючи ви погоджуєтесь зі збором та обробкою персональних даних та користувальницькою угодою
         </p>
 
-        <Button clazz={classes.button}>Відправити</Button>
+        <button className={classes.button}>Відправити</button>
        </Form>}
        </Formik>
     </div>
