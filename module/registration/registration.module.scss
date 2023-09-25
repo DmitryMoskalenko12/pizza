@@ -119,7 +119,11 @@
 @media(min-width: 768px) {
   .formWrapper {
     width: 668px;
-    height: 455px;
+    height: 445px;
+  }
+  
+  .nameLabel {
+    margin-top: 5px;
   }
 
   .form {
