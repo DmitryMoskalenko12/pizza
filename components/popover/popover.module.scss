@@ -1,0 +1,42 @@
+@use '../../styles/variables.scss';
+@use '../../styles/mixins.scss';
+
+.popover {
+  position: absolute;
+  top: 43px;
+  right: 0;
+  width: 349px;
+  padding: 24px;
+  border-radius: 10px;
+  border: 3.5px solid variables.$border-popover;
+  box-shadow: variables.$box-shadow-popover;
+  z-index: 1000000000;
+  background: variables.$white;
+  transition: variables.$transition;
+}
+
+.empty {
+  color: variables.$our;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size19;
+  font-weight: variables.$font-weight700;
+  text-align: center;
+}
+
+.finalPrice {
+  @include mixins.flex(flex, space-between, baseline);
+}
+
+.sum {
+  color: variables.$our;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size15;
+  font-weight: variables.$font-weight600;
+}
+
+.finalPrice {
+  color: variables.$main-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size24;
+  font-weight: variables.$font-weight800;
+}

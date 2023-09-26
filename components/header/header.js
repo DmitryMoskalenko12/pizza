@@ -14,6 +14,7 @@ import Modal from "@/module/modal/modal";
 import Registration from "@/module/registration/registration";
 import { useSession } from "next-auth/react";
 import CallOrder from "@/module/callOrder/call-order";
+import Popovers from "../popover/popover";
 
 const Header = (props) => {
   const [activeSideMenu, setActiveSideMenu] = useState(false);
@@ -24,6 +25,7 @@ const Header = (props) => {
   const pathName = useRouter().pathname;
   const basketData = useSelector(state => state.basket.basketArr);
   const successMessage = useSelector(state => state.basket.message);
+  const [showPopover, setShowPopover] = useState(false);
   const {data: session, status} = useSession();
   const loading = status === 'authenticated';
 
@@ -63,6 +65,14 @@ const Header = (props) => {
    }
   }
 
+  const onShowPopover = () => {
+    setShowPopover(true);
+  }
+
+  const onHidePopover = () => {
+    setShowPopover(false);
+  }
+
   return (
     <header className={classes.header}>
       <div className="container">
@@ -97,7 +107,7 @@ const Header = (props) => {
 
           <Button setSignIn={setCallOrder} clazz={classes.button}>Замовити дзвінок</Button>
           <Telefon clazz={classes.phone}>38 099 611 76 93</Telefon>
-          <Link href={'/basketPage'} className={classes.basket}>
+          <Link onMouseEnter={onShowPopover} onMouseLeave={onHidePopover} href={'/basketPage'} className={classes.basket}>
             <span>Кошик</span>
             <span>|</span>
             <span>{basketData.length}</span>
@@ -133,11 +143,16 @@ const Header = (props) => {
               session && loading ? <Link onClick={() => setActiveSideMenu(false)} className={classes.personal} href={'/personalPage'}>Особистий кабінет</Link> : <button onClick={() => {setSignIn(true); setActiveSideMenu(false)}} className={classes.signIn}>Увійти</button>
             }
            <Telefon clazz={classes.phone2}>38 099 611 76 93</Telefon>
-           <Link onClick={() => setActiveSideMenu(false)} href={'/basketPage'} className={classes.basket2}>
-              <span>Кошик</span>
-              <span>|</span>
-              <span>{basketData.length}</span>
-           </Link>
+           <div className={classes.popovLink}>
+             <Link onMouseEnter={onShowPopover} onMouseLeave={onHidePopover} onClick={() => setActiveSideMenu(false)} href={'/basketPage'} className={classes.basket2}>
+                <span>Кошик</span>
+                <span>|</span>
+                <span>{basketData.length}</span>
+             </Link>
+             {
+               showPopover ? <Popovers onShowPopover={onShowPopover} onHidePopover={onHidePopover}/> : null
+             }
+           </div>
         </div>
        </div>}
       </div>  

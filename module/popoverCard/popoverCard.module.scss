@@ -1,0 +1,101 @@
+@use '../../styles/variables.scss';
+@use '../../styles/mixins.scss';
+
+.card {
+  position: relative;
+  @include mixins.flex(flex, space-between, center);
+  z-index: 123;
+}
+
+.block1 {
+  width: 146px;
+}
+
+.h3 {
+  color: variables.$our;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size15;
+  font-weight: variables.$font-weight700;
+}
+
+.incDec {
+  @include mixins.flex(flex, center, center);
+  gap: 20px;
+  width: 93px;
+  height: 32px;
+  border-radius: 8px;
+  background: variables.$request-call-backg;
+  margin-right: 34px;
+  margin-top: 12px;
+}
+
+.dec {
+  color: variables.$sign-in;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size21;
+  font-weight: variables.$font-weight400;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.number {
+  color: variables.$sign-in;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size18;
+  font-weight: variables.$font-weight700;
+}
+
+.inc {
+  color: variables.$sign-in;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size21;
+  font-weight: variables.$font-weight400;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.block2 {
+  @include mixins.flex(flex, center, flex-end);
+  flex-direction: column;
+}
+
+.delete {
+  width: 27px;
+  height: 27px;
+  @include mixins.flex(flex, center, center);
+  background: none;
+  border-radius: 100%;
+  color: rgba($color: variables.$delete, $alpha: 0.5);
+  border: 1px solid rgba($color: variables.$delete, $alpha: 0.5);
+  font-size: variables.$font-size58;
+  font-weight: variables.$font-weight400;
+  cursor: pointer;
+}
+
+.price {
+  color: variables.$main-color;
+  text-align: center;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size20;
+  font-weight: variables.$font-weight700;
+  margin-top: 22px;
+}
+
+.descr {
+  width: 146px;
+  color: variables.$burger-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size13;
+  font-weight: variables.$font-weight500;
+  line-height: 19px;
+}
+
+.hr {
+  border-top: 1px solid variables.$hr-color;
+  border-radius: 10px;
+  box-shadow: variables.$hr;
+  margin-top: 18px;
+}
+

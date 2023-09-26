@@ -167,6 +167,7 @@
   }
   
   .basket {
+    position: relative;
     @include mixins.flex(flex, center, center);
     background: variables.$main-color;
     gap: 14px;
@@ -263,6 +264,12 @@
     font-weight: variables.$font-weight900;
     margin: 0;
     margin-top: 10px;
+  }
+}
+
+@media(min-width: 992px) {
+  .popovLink {
+    position: relative;
   }
 }
 
