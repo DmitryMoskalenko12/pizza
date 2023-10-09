@@ -16,7 +16,7 @@ import { useSession } from "next-auth/react";
 import CallOrder from "@/module/callOrder/call-order";
 import Popovers from "../popover/popover";
 
-const Header = (props) => {
+const Header = () => {
   const [activeSideMenu, setActiveSideMenu] = useState(false);
   const [showBasketHeader, setShowBasketHeader] = useState(false);
   const [showBasketHeader2, setShowBasketHeader2] = useState(false);
